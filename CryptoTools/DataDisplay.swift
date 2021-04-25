@@ -35,7 +35,9 @@ enum DataDisplay {
     /// - Parameter data: The data to convert
     /// - Returns: A hex string
     static func hexString(for data: Data) -> String {
-        ""
+        data
+            .map { String($0, radix: 16) }
+            .reduce("", +)
     }
     
     
