@@ -15,8 +15,20 @@ enum DataDisplay {
     /// - Parameter hexString: The hex string to convert
     /// - Returns: Those bytes as a Data object
     static func data(forHexString hexString: String) -> Data? {
-        precondition(hexString.count % 2 == 0)
-        return Data()
+        guard hexString.count % 2 == 0 else {
+            return nil
+        }
+        var bytes = [UInt8]()
+        for i in stride(from: 0, to: hexString.count, by: 2) {
+            let rangeStart = hexString.index(hexString.startIndex, offsetBy: i)
+            let rangeEnd = hexString.index(rangeStart, offsetBy: 2)
+            let range = rangeStart..<rangeEnd
+            guard let byte = UInt8(hexString[range], radix: 16) else {
+                return nil
+            }
+            bytes.append(byte)
+        }
+        return Data(bytes)
     }
     
     /// Convert a data object onto a string represention of 2-digit hex bytes
