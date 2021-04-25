@@ -12,7 +12,6 @@
 		834913D02635FB0600892487 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 834913CF2635FB0600892487 /* Assets.xcassets */; };
 		834913D32635FB0600892487 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 834913D22635FB0600892487 /* Preview Assets.xcassets */; };
 		834913DF2635FB0600892487 /* CryptopalsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834913DE2635FB0600892487 /* CryptopalsTests.swift */; };
-		834913EA2635FB0600892487 /* CryptopalsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834913E92635FB0600892487 /* CryptopalsUITests.swift */; };
 		834914082635FB7900892487 /* CryptoTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834913FF2635FB7900892487 /* CryptoTools.framework */; };
 		8349140F2635FB7900892487 /* DataDisplayHexStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8349140E2635FB7900892487 /* DataDisplayHexStringTests.swift */; };
 		834914112635FB7900892487 /* CryptoTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 834914012635FB7900892487 /* CryptoTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,13 +22,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		834913DB2635FB0600892487 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 834913C02635FB0500892487 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 834913C72635FB0500892487;
-			remoteInfo = Cryptopals;
-		};
-		834913E62635FB0600892487 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 834913C02635FB0500892487 /* Project object */;
 			proxyType = 1;
@@ -84,9 +76,6 @@
 		834913DA2635FB0600892487 /* CryptopalsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptopalsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		834913DE2635FB0600892487 /* CryptopalsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptopalsTests.swift; sourceTree = "<group>"; };
 		834913E02635FB0600892487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		834913E52635FB0600892487 /* CryptopalsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptopalsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		834913E92635FB0600892487 /* CryptopalsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptopalsUITests.swift; sourceTree = "<group>"; };
-		834913EB2635FB0600892487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		834913FF2635FB7900892487 /* CryptoTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CryptoTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		834914012635FB7900892487 /* CryptoTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CryptoTools.h; sourceTree = "<group>"; };
 		834914022635FB7900892487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,13 +95,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		834913D72635FB0600892487 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		834913E22635FB0600892487 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -142,7 +124,6 @@
 			children = (
 				834913CA2635FB0500892487 /* Cryptopals */,
 				834913DD2635FB0600892487 /* CryptopalsTests */,
-				834913E82635FB0600892487 /* CryptopalsUITests */,
 				834914002635FB7900892487 /* CryptoTools */,
 				8349140D2635FB7900892487 /* CryptoToolsTests */,
 				834913C92635FB0500892487 /* Products */,
@@ -154,7 +135,6 @@
 			children = (
 				834913C82635FB0500892487 /* Cryptopals.app */,
 				834913DA2635FB0600892487 /* CryptopalsTests.xctest */,
-				834913E52635FB0600892487 /* CryptopalsUITests.xctest */,
 				834913FF2635FB7900892487 /* CryptoTools.framework */,
 				834914072635FB7900892487 /* CryptoToolsTests.xctest */,
 			);
@@ -189,15 +169,6 @@
 				834913E02635FB0600892487 /* Info.plist */,
 			);
 			path = CryptopalsTests;
-			sourceTree = "<group>";
-		};
-		834913E82635FB0600892487 /* CryptopalsUITests */ = {
-			isa = PBXGroup;
-			children = (
-				834913E92635FB0600892487 /* CryptopalsUITests.swift */,
-				834913EB2635FB0600892487 /* Info.plist */,
-			);
-			path = CryptopalsUITests;
 			sourceTree = "<group>";
 		};
 		834914002635FB7900892487 /* CryptoTools */ = {
@@ -270,24 +241,6 @@
 			productReference = 834913DA2635FB0600892487 /* CryptopalsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		834913E42635FB0600892487 /* CryptopalsUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 834913F42635FB0600892487 /* Build configuration list for PBXNativeTarget "CryptopalsUITests" */;
-			buildPhases = (
-				834913E12635FB0600892487 /* Sources */,
-				834913E22635FB0600892487 /* Frameworks */,
-				834913E32635FB0600892487 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				834913E72635FB0600892487 /* PBXTargetDependency */,
-			);
-			name = CryptopalsUITests;
-			productName = CryptopalsUITests;
-			productReference = 834913E52635FB0600892487 /* CryptopalsUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		834913FE2635FB7900892487 /* CryptoTools */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 834914162635FB7900892487 /* Build configuration list for PBXNativeTarget "CryptoTools" */;
@@ -341,10 +294,6 @@
 						CreatedOnToolsVersion = 12.4;
 						TestTargetID = 834913C72635FB0500892487;
 					};
-					834913E42635FB0600892487 = {
-						CreatedOnToolsVersion = 12.4;
-						TestTargetID = 834913C72635FB0500892487;
-					};
 					834913FE2635FB7900892487 = {
 						CreatedOnToolsVersion = 12.4;
 						LastSwiftMigration = 1240;
@@ -370,7 +319,6 @@
 			targets = (
 				834913C72635FB0500892487 /* Cryptopals */,
 				834913D92635FB0600892487 /* CryptopalsTests */,
-				834913E42635FB0600892487 /* CryptopalsUITests */,
 				834913FE2635FB7900892487 /* CryptoTools */,
 				834914062635FB7900892487 /* CryptoToolsTests */,
 			);
@@ -388,13 +336,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		834913D82635FB0600892487 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		834913E32635FB0600892487 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -435,14 +376,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		834913E12635FB0600892487 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				834913EA2635FB0600892487 /* CryptopalsUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		834913FB2635FB7900892487 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -466,11 +399,6 @@
 			isa = PBXTargetDependency;
 			target = 834913C72635FB0500892487 /* Cryptopals */;
 			targetProxy = 834913DB2635FB0600892487 /* PBXContainerItemProxy */;
-		};
-		834913E72635FB0600892487 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 834913C72635FB0500892487 /* Cryptopals */;
-			targetProxy = 834913E62635FB0600892487 /* PBXContainerItemProxy */;
 		};
 		8349140A2635FB7900892487 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -699,46 +627,6 @@
 			};
 			name = Release;
 		};
-		834913F52635FB0600892487 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 44UYG9267L;
-				INFOPLIST_FILE = CryptopalsUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.chrisdownie.CryptopalsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Cryptopals;
-			};
-			name = Debug;
-		};
-		834913F62635FB0600892487 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 44UYG9267L;
-				INFOPLIST_FILE = CryptopalsUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.chrisdownie.CryptopalsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Cryptopals;
-			};
-			name = Release;
-		};
 		834914172635FB7900892487 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -862,15 +750,6 @@
 			buildConfigurations = (
 				834913F22635FB0600892487 /* Debug */,
 				834913F32635FB0600892487 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		834913F42635FB0600892487 /* Build configuration list for PBXNativeTarget "CryptopalsUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				834913F52635FB0600892487 /* Debug */,
-				834913F62635FB0600892487 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
