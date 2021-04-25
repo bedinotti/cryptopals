@@ -41,18 +41,18 @@ enum DataDisplay {
     }
     
     
-    private static func base64IndexFor(char: Character) -> Int? {
-        let index: Int
+    private static func base64IndexFor(char: Character) -> UInt8? {
+        let index: UInt8
         guard let asciiValue = char.asciiValue else {
             return nil
         }
         switch asciiValue {
         case 65...90: // A to Z
-            index = Int(char.asciiValue! - Character("A").asciiValue!)
+            index = char.asciiValue! - Character("A").asciiValue!
         case 97...122: // a to z
-            index = Int(char.asciiValue! - Character("a").asciiValue!)
+            index = 26 + char.asciiValue! - Character("a").asciiValue!
         case 48...57: // 0 to 9
-            index = Int(char.asciiValue! - Character("0").asciiValue!)
+            index = 26 * 2 + char.asciiValue! - Character("0").asciiValue!
         case Character("+").asciiValue:
             index = 62
         case Character("/").asciiValue:
@@ -90,9 +90,49 @@ enum DataDisplay {
 
     /// Convert a base64-encoded string into its underlying Data representation
     /// - Parameter base64String: A valid base64-encoded string
-    /// - Returns: Those bytes as a Data object
-    static func data(forBase64String base64String: String) -> Data {
-        Data()
+    /// - Returns: Those bytes as a Data object. Nil if input is invalid.
+    static func data(forBase64String base64String: String) -> Data? {
+        guard base64String.count % 4 == 0 else {
+            return nil
+        }
+        var bytes = [UInt8]()
+        for index in stride(from: 0, to: base64String.count, by: 4) {
+            let rangeStart = base64String.index(base64String.startIndex, offsetBy: index)
+            let rangeEnd = base64String.index(rangeStart, offsetBy: 4)
+            let range = rangeStart..<rangeEnd
+            let substring = base64String[range]
+            
+            assert(substring.count == 4)
+            
+            var indexes = [UInt8]()
+            for char in substring {
+                if let index = base64IndexFor(char: char) {
+                    indexes.append(index)
+                } else if char == "=" {
+                    continue
+                } else {
+                    // invalid character, shut it all down.
+                    return nil
+                }
+            }
+            
+            let memory: UInt32 = indexes
+                .enumerated()
+                .reduce(UInt32(0)) { (memory, pair) -> UInt32 in
+                    let (index, value) = pair
+                    let shiftAmount = 6 * (3 - index)
+                    return memory | (UInt32(value) << shiftAmount)
+                }
+            
+            bytes.append(UInt8((memory & 0xff0000) >> 16))
+            if indexes.count > 2 {
+                bytes.append(UInt8((memory & 0x00ff00) >> 8))
+            }
+            if indexes.count > 3 {
+                bytes.append(UInt8(memory & 0x0000ff))
+            }
+        }
+        return Data(bytes)
     }
     
     /// Convert a data object into its base64-encoded String representation
