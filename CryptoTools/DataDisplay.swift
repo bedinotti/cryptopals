@@ -41,6 +41,53 @@ enum DataDisplay {
     }
     
     
+    private static func base64IndexFor(char: Character) -> Int? {
+        let index: Int
+        guard let asciiValue = char.asciiValue else {
+            return nil
+        }
+        switch asciiValue {
+        case 65...90: // A to Z
+            index = Int(char.asciiValue! - Character("A").asciiValue!)
+        case 97...122: // a to z
+            index = Int(char.asciiValue! - Character("a").asciiValue!)
+        case 48...57: // 0 to 9
+            index = Int(char.asciiValue! - Character("0").asciiValue!)
+        case Character("+").asciiValue:
+            index = 62
+        case Character("/").asciiValue:
+            index = 63
+        default:
+            return nil
+        }
+        return index
+    }
+    
+    private static func characterFor(base64Index: Int) -> Character? {
+        guard 0 <= base64Index, base64Index <= 63 else {
+            return nil
+        }
+        let index = UInt8(base64Index)
+        
+        let value: UInt8
+        switch index {
+        case 0...25:
+            value = index + Character("A").asciiValue!
+        case 26...51:
+            value = (index - 26) + Character("a").asciiValue!
+        case 52...61:
+            value = (index - 52) + Character("0").asciiValue!
+        case 62:
+            value = Character("+").asciiValue!
+        case 63:
+            value = Character("/").asciiValue!
+        default:
+            fatalError("Invalid Base64 index should have already returned nil")
+        }
+        
+        return Character(Unicode.Scalar(value))
+    }
+
     /// Convert a base64-encoded string into its underlying Data representation
     /// - Parameter base64String: A valid base64-encoded string
     /// - Returns: Those bytes as a Data object
