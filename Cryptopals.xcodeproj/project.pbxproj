@@ -18,6 +18,7 @@
 		834914142635FB7900892487 /* CryptoTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834913FF2635FB7900892487 /* CryptoTools.framework */; };
 		834914152635FB7900892487 /* CryptoTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 834913FF2635FB7900892487 /* CryptoTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		834914322635FDA400892487 /* DataDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834914312635FDA400892487 /* DataDisplay.swift */; };
+		8349144226360AB400892487 /* DataDisplayBase64Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8349144126360AB400892487 /* DataDisplayBase64Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		8349140E2635FB7900892487 /* DataDisplayHexStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDisplayHexStringTests.swift; sourceTree = "<group>"; };
 		834914102635FB7900892487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		834914312635FDA400892487 /* DataDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDisplay.swift; sourceTree = "<group>"; };
+		8349144126360AB400892487 /* DataDisplayBase64Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDisplayBase64Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				8349140E2635FB7900892487 /* DataDisplayHexStringTests.swift */,
+				8349144126360AB400892487 /* DataDisplayBase64Tests.swift */,
 				834914102635FB7900892487 /* Info.plist */,
 			);
 			path = CryptoToolsTests;
@@ -389,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8349140F2635FB7900892487 /* DataDisplayHexStringTests.swift in Sources */,
+				8349144226360AB400892487 /* DataDisplayBase64Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
