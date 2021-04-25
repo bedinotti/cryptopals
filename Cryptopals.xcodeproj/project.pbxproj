@@ -14,10 +14,11 @@
 		834913DF2635FB0600892487 /* CryptopalsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834913DE2635FB0600892487 /* CryptopalsTests.swift */; };
 		834913EA2635FB0600892487 /* CryptopalsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834913E92635FB0600892487 /* CryptopalsUITests.swift */; };
 		834914082635FB7900892487 /* CryptoTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834913FF2635FB7900892487 /* CryptoTools.framework */; };
-		8349140F2635FB7900892487 /* CryptoToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8349140E2635FB7900892487 /* CryptoToolsTests.swift */; };
+		8349140F2635FB7900892487 /* DataDisplayHexStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8349140E2635FB7900892487 /* DataDisplayHexStringTests.swift */; };
 		834914112635FB7900892487 /* CryptoTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 834914012635FB7900892487 /* CryptoTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		834914142635FB7900892487 /* CryptoTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834913FF2635FB7900892487 /* CryptoTools.framework */; };
 		834914152635FB7900892487 /* CryptoTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 834913FF2635FB7900892487 /* CryptoTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		834914322635FDA400892487 /* DataDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834914312635FDA400892487 /* DataDisplay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,8 +91,9 @@
 		834914012635FB7900892487 /* CryptoTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CryptoTools.h; sourceTree = "<group>"; };
 		834914022635FB7900892487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		834914072635FB7900892487 /* CryptoToolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoToolsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8349140E2635FB7900892487 /* CryptoToolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoToolsTests.swift; sourceTree = "<group>"; };
+		8349140E2635FB7900892487 /* DataDisplayHexStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDisplayHexStringTests.swift; sourceTree = "<group>"; };
 		834914102635FB7900892487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		834914312635FDA400892487 /* DataDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDisplay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				834914012635FB7900892487 /* CryptoTools.h */,
+				834914312635FDA400892487 /* DataDisplay.swift */,
 				834914022635FB7900892487 /* Info.plist */,
 			);
 			path = CryptoTools;
@@ -210,7 +213,7 @@
 		8349140D2635FB7900892487 /* CryptoToolsTests */ = {
 			isa = PBXGroup;
 			children = (
-				8349140E2635FB7900892487 /* CryptoToolsTests.swift */,
+				8349140E2635FB7900892487 /* DataDisplayHexStringTests.swift */,
 				834914102635FB7900892487 /* Info.plist */,
 			);
 			path = CryptoToolsTests;
@@ -344,6 +347,7 @@
 					};
 					834913FE2635FB7900892487 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 					834914062635FB7900892487 = {
 						CreatedOnToolsVersion = 12.4;
@@ -443,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				834914322635FDA400892487 /* DataDisplay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,7 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8349140F2635FB7900892487 /* CryptoToolsTests.swift in Sources */,
+				8349140F2635FB7900892487 /* DataDisplayHexStringTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +608,7 @@
 		834913EF2635FB0600892487 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Cryptopals/Cryptopals.entitlements;
@@ -627,6 +633,7 @@
 		834913F02635FB0600892487 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Cryptopals/Cryptopals.entitlements;
@@ -735,6 +742,7 @@
 		834914172635FB7900892487 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -753,6 +761,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.chrisdownie.CryptoTools;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -762,6 +771,7 @@
 		834914182635FB7900892487 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
