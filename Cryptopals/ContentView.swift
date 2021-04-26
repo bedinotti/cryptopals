@@ -16,7 +16,7 @@ struct ContentView: View {
     
     func runCurrentChallenge() {
         if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil {
-            ChallengeOne.run()
+            Challenge.current()
         }
     }
 }

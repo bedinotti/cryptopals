@@ -9,15 +9,6 @@ import Foundation
 
 enum Challenge {
     case one
-}
-
-enum ChallengeSet {
-    case one
     
-    var challenges: [Challenge] {
-        switch self {
-        case .one:
-            return [.one]
-        }
-    }
+    static let current: () -> Void = ChallengeOne.run
 }
