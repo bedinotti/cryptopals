@@ -9,12 +9,12 @@ import Foundation
 
 /// This namspace has a collection of functions for creating more easy-to-read displays of byte arrays.
 /// Foundation provides implementations for these methods, so we're using our own namespace to be sure we're using our own implementation
-enum DataDisplay {
+public enum DataDisplay {
     
     /// Convert a string of 2-digit hexidecimal numbers into a Data object
     /// - Parameter hexString: The hex string to convert
     /// - Returns: Those bytes as a Data object
-    static func data(forHexString hexString: String) -> Data? {
+    public static func data(forHexString hexString: String) -> Data? {
         guard hexString.count % 2 == 0 else {
             return nil
         }
@@ -34,7 +34,7 @@ enum DataDisplay {
     /// Convert a data object onto a string represention of 2-digit hex bytes
     /// - Parameter data: The data to convert
     /// - Returns: A hex string
-    static func hexString(for data: Data) -> String {
+    public static func hexString(for data: Data) -> String {
         data
             .map { String($0, radix: 16) }
             .reduce("", +)
@@ -90,7 +90,7 @@ enum DataDisplay {
     /// Convert a base64-encoded string into its underlying Data representation
     /// - Parameter base64String: A valid base64-encoded string
     /// - Returns: Those bytes as a Data object. Nil if input is invalid.
-    static func data(forBase64String base64String: String) -> Data? {
+    public static func data(forBase64String base64String: String) -> Data? {
         guard base64String.count % 4 == 0 else {
             return nil
         }
@@ -137,7 +137,7 @@ enum DataDisplay {
     /// Convert a data object into its base64-encoded String representation
     /// - Parameter data: The data to convert
     /// - Returns: A base64-encoded string
-    static func base64String(for data: Data) -> String {
+    public static func base64String(for data: Data) -> String {
         var result = ""
         for index in stride(from: 0, to: data.count, by: 3) {
             let rangeStart = data.index(data.startIndex, offsetBy: index)

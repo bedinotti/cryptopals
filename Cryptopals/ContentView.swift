@@ -11,8 +11,16 @@ struct ContentView: View {
     var body: some View {
         Text("Hello, world!")
             .padding()
+            .onAppear(perform: runCurrentChallenge)
+    }
+    
+    func runCurrentChallenge() {
+        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil {
+            ChallengeOne.run()
+        }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
