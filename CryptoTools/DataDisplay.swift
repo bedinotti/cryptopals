@@ -63,11 +63,10 @@ enum DataDisplay {
         return index
     }
     
-    private static func characterFor(base64Index: Int) -> Character? {
-        guard 0 <= base64Index, base64Index <= 63 else {
+    private static func characterFor(base64Index index: UInt8) -> Character? {
+        guard 0 <= index, index <= 63 else {
             return nil
         }
-        let index = UInt8(base64Index)
         
         let value: UInt8
         switch index {
@@ -139,6 +138,47 @@ enum DataDisplay {
     /// - Parameter data: The data to convert
     /// - Returns: A base64-encoded string
     static func base64String(for data: Data) -> String {
-        ""
+        var result = ""
+        for index in stride(from: 0, to: data.count, by: 3) {
+            let rangeStart = data.index(data.startIndex, offsetBy: index)
+            let offset = min(data.distance(from: rangeStart, to: data.endIndex), 3)
+            let rangeEnd = data.index(rangeStart, offsetBy: offset)
+            let range = rangeStart..<rangeEnd
+            
+            let bytes = data[range]
+            assert(bytes.count <= 3)
+            
+            let memory: UInt32 = bytes
+                .enumerated()
+                .reduce(UInt32(0)) { (memory, pair) -> UInt32 in
+                    let shiftAmount = 8 * (2 - pair.offset)
+                    return memory | (UInt32(pair.element) << shiftAmount)
+                }
+            
+            let first  = UInt8((memory & 0xfc0000) >> (6 * 3))
+            let second = UInt8((memory & 0x03f000) >> (6 * 2))
+            let third  = UInt8((memory & 0x000fc0) >> (6))
+            let fourth = UInt8(memory & 0x00003f)
+            
+            let validCharcters: [UInt8]
+            let equalsToAppend: Int
+            switch bytes.count {
+            case 1:
+                validCharcters = [first, second]
+                equalsToAppend = 2
+            case 2:
+                validCharcters = [first, second, third]
+                equalsToAppend = 1
+            case 3:
+                validCharcters = [first, second, third, fourth]
+                equalsToAppend = 0
+            default:
+                fatalError("Data should be a multiple of 3 when encoding to Base64")
+            }
+            
+            result.append(contentsOf: validCharcters.compactMap(characterFor(base64Index:)))
+            result.append(contentsOf: String(repeating: "=", count: equalsToAppend))
+        }
+        return result
     }
 }
