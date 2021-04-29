@@ -51,7 +51,8 @@ public class Analysis {
         let score = text
             .map { letter -> Double in
                 let multiplier = letter.isUppercase ? capitalMultiplier : 1.0
-                return multiplier * englishLetterScore[letter, default: 0.0]
+                let lowercased = Character(letter.lowercased())
+                return multiplier * englishLetterScore[lowercased, default: 0.0]
             }
             .reduce(0, +)
         return score
