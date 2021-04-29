@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Cipher {
+public protocol Cipher {
     func encrypt(data: Data) -> Data
     func decrypt(data: Data) -> Data
 }

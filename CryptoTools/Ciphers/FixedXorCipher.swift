@@ -7,14 +7,14 @@
 
 import Foundation
 
-class FixedXorCipher: Cipher {
+public class FixedXorCipher: Cipher {
     let key: Data
     
-    init(key: Data) {
+    public init(key: Data) {
         self.key = key
     }
     
-    func encrypt(data: Data) -> Data {
+    public func encrypt(data: Data) -> Data {
         precondition(data.count == key.count)
         
         let bytes = zip(data, key)
@@ -25,7 +25,7 @@ class FixedXorCipher: Cipher {
         return Data(bytes)
     }
     
-    func decrypt(data: Data) -> Data {
+    public func decrypt(data: Data) -> Data {
         encrypt(data: data) // in this case, encrypt and decrypt are identical operations.
     }
 }
