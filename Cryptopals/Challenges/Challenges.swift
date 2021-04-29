@@ -10,5 +10,5 @@ import Foundation
 enum Challenge {
     case one
     
-    static let current: () -> Void = ChallengeTwo.run
+    static let current: () -> Void = ChallengeThree.run
 }
