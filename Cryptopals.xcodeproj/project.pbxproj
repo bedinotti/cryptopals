@@ -25,6 +25,8 @@
 		83694072263A30F7000D3599 /* FixedXorCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694071263A30F7000D3599 /* FixedXorCipher.swift */; };
 		83694074263A31E3000D3599 /* FixedXorCipherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694073263A31E3000D3599 /* FixedXorCipherTests.swift */; };
 		83694076263A32CB000D3599 /* Challenge2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694075263A32CB000D3599 /* Challenge2.swift */; };
+		83694078263AEA31000D3599 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694077263AEA31000D3599 /* Analysis.swift */; };
+		8369407A263AECC5000D3599 /* AnalysisEnglishScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694079263AECC5000D3599 /* AnalysisEnglishScoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,8 @@
 		83694071263A30F7000D3599 /* FixedXorCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedXorCipher.swift; sourceTree = "<group>"; };
 		83694073263A31E3000D3599 /* FixedXorCipherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedXorCipherTests.swift; sourceTree = "<group>"; };
 		83694075263A32CB000D3599 /* Challenge2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge2.swift; sourceTree = "<group>"; };
+		83694077263AEA31000D3599 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
+		83694079263AECC5000D3599 /* AnalysisEnglishScoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisEnglishScoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +195,7 @@
 			children = (
 				834914012635FB7900892487 /* CryptoTools.h */,
 				834914312635FDA400892487 /* DataDisplay.swift */,
+				83694077263AEA31000D3599 /* Analysis.swift */,
 				83694070263A30E4000D3599 /* Ciphers */,
 				834914022635FB7900892487 /* Info.plist */,
 			);
@@ -200,6 +205,7 @@
 		8349140D2635FB7900892487 /* CryptoToolsTests */ = {
 			isa = PBXGroup;
 			children = (
+				83694079263AECC5000D3599 /* AnalysisEnglishScoreTests.swift */,
 				8349140E2635FB7900892487 /* DataDisplayHexStringTests.swift */,
 				8349144126360AB400892487 /* DataDisplayBase64Tests.swift */,
 				83694073263A31E3000D3599 /* FixedXorCipherTests.swift */,
@@ -429,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8369406F263A308B000D3599 /* Cipher.swift in Sources */,
+				83694078263AEA31000D3599 /* Analysis.swift in Sources */,
 				83694072263A30F7000D3599 /* FixedXorCipher.swift in Sources */,
 				834914322635FDA400892487 /* DataDisplay.swift in Sources */,
 			);
@@ -441,6 +448,7 @@
 				8349140F2635FB7900892487 /* DataDisplayHexStringTests.swift in Sources */,
 				83694074263A31E3000D3599 /* FixedXorCipherTests.swift in Sources */,
 				8349144226360AB400892487 /* DataDisplayBase64Tests.swift in Sources */,
+				8369407A263AECC5000D3599 /* AnalysisEnglishScoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
