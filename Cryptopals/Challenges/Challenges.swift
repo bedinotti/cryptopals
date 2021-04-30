@@ -7,7 +7,7 @@
 
 import Foundation
 
-var currentChallenge = Challenge04()
+var currentChallenge = TimedChallengeRunner(challenge: Challenge04())
 var allChallenges = MultipleChallengeRunner(challenges: [
     Challenge01(),
     Challenge02(),
