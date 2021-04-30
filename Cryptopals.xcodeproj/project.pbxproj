@@ -39,6 +39,7 @@
 		83694090263C95D1000D3599 /* 6.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8369408F263C95D1000D3599 /* 6.txt */; };
 		83694092263C95EC000D3599 /* Challenge06.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694091263C95EC000D3599 /* Challenge06.swift */; };
 		83694094263C979F000D3599 /* AnalysisHammingDistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694093263C979F000D3599 /* AnalysisHammingDistanceTests.swift */; };
+		83694096263CA71C000D3599 /* AnalysisBlockSizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694095263CA71C000D3599 /* AnalysisBlockSizeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		8369408F263C95D1000D3599 /* 6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 6.txt; sourceTree = "<group>"; };
 		83694091263C95EC000D3599 /* Challenge06.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge06.swift; sourceTree = "<group>"; };
 		83694093263C979F000D3599 /* AnalysisHammingDistanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisHammingDistanceTests.swift; sourceTree = "<group>"; };
+		83694095263CA71C000D3599 /* AnalysisBlockSizeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisBlockSizeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				83694079263AECC5000D3599 /* AnalysisEnglishScoreTests.swift */,
+				83694095263CA71C000D3599 /* AnalysisBlockSizeTests.swift */,
 				83694093263C979F000D3599 /* AnalysisHammingDistanceTests.swift */,
 				8349140E2635FB7900892487 /* DataDisplayHexStringTests.swift */,
 				8349144126360AB400892487 /* DataDisplayBase64Tests.swift */,
@@ -508,6 +511,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83694094263C979F000D3599 /* AnalysisHammingDistanceTests.swift in Sources */,
+				83694096263CA71C000D3599 /* AnalysisBlockSizeTests.swift in Sources */,
 				8349140F2635FB7900892487 /* DataDisplayHexStringTests.swift in Sources */,
 				83694074263A31E3000D3599 /* FixedXorCipherTests.swift in Sources */,
 				8369408C263C91D7000D3599 /* RepeatingXorCipherTests.swift in Sources */,

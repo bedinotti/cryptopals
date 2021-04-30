@@ -112,4 +112,8 @@ public class Analysis {
         let toData = to.data(using: .utf8)!
         return hammingDistance(fromData, toData)
     }
+    
+    public static func blockSize(in encryptedData: Data) -> Int {
+        0
+    }
 }
