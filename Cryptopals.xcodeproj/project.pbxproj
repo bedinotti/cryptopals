@@ -35,6 +35,7 @@
 		83694088263C2E71000D3599 /* TimedChallengeRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694087263C2E71000D3599 /* TimedChallengeRunner.swift */; };
 		8369408A263C91C9000D3599 /* RepeatingXorCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694089263C91C9000D3599 /* RepeatingXorCipher.swift */; };
 		8369408C263C91D7000D3599 /* RepeatingXorCipherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369408B263C91D7000D3599 /* RepeatingXorCipherTests.swift */; };
+		8369408E263C9394000D3599 /* Challenge05.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369408D263C9394000D3599 /* Challenge05.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		83694087263C2E71000D3599 /* TimedChallengeRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimedChallengeRunner.swift; sourceTree = "<group>"; };
 		83694089263C91C9000D3599 /* RepeatingXorCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingXorCipher.swift; sourceTree = "<group>"; };
 		8369408B263C91D7000D3599 /* RepeatingXorCipherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingXorCipherTests.swift; sourceTree = "<group>"; };
+		8369408D263C9394000D3599 /* Challenge05.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge05.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +251,7 @@
 				83694075263A32CB000D3599 /* Challenge02.swift */,
 				8369407B263AEE12000D3599 /* Challenge03.swift */,
 				83694080263BAF19000D3599 /* Challenge04.swift */,
+				8369408D263C9394000D3599 /* Challenge05.swift */,
 			);
 			path = Set1;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				83694086263C2E2D000D3599 /* MultipleChallengeRunner.swift in Sources */,
 				834913CC2635FB0500892487 /* CryptopalsApp.swift in Sources */,
 				834914492636628D00892487 /* Challenges.swift in Sources */,
+				8369408E263C9394000D3599 /* Challenge05.swift in Sources */,
 				83694088263C2E71000D3599 /* TimedChallengeRunner.swift in Sources */,
 				83694076263A32CB000D3599 /* Challenge02.swift in Sources */,
 				83694084263C2E16000D3599 /* ChallengeRunner.swift in Sources */,

@@ -8,8 +8,8 @@
 import Foundation
 
 public class RepeatingXorCipher: Cipher {
-    let key: Data
-    init(key: Data) {
+    private let key: Data
+    public init(key: Data) {
         self.key = key
     }
     
