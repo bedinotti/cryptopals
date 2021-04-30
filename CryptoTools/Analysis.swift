@@ -71,7 +71,7 @@ public class Analysis {
 
         let perfectScore = 100.0
         func letterScore(expectedFrequency: Double, actualFrequency: Double) -> Double {
-            max(perfectScore - pow(abs(expectedFrequency - actualFrequency), 2.0), 0)
+            max(perfectScore - pow(abs(expectedFrequency - actualFrequency), 1.2), 0)
         }
         
         let letterScoreSum = englishLetterScore.reduce(0.0) { sum, pair in
