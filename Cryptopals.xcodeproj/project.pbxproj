@@ -36,6 +36,8 @@
 		8369408A263C91C9000D3599 /* RepeatingXorCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694089263C91C9000D3599 /* RepeatingXorCipher.swift */; };
 		8369408C263C91D7000D3599 /* RepeatingXorCipherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369408B263C91D7000D3599 /* RepeatingXorCipherTests.swift */; };
 		8369408E263C9394000D3599 /* Challenge05.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369408D263C9394000D3599 /* Challenge05.swift */; };
+		83694090263C95D1000D3599 /* 6.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8369408F263C95D1000D3599 /* 6.txt */; };
+		83694092263C95EC000D3599 /* Challenge06.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694091263C95EC000D3599 /* Challenge06.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,8 @@
 		83694089263C91C9000D3599 /* RepeatingXorCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingXorCipher.swift; sourceTree = "<group>"; };
 		8369408B263C91D7000D3599 /* RepeatingXorCipherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingXorCipherTests.swift; sourceTree = "<group>"; };
 		8369408D263C9394000D3599 /* Challenge05.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge05.swift; sourceTree = "<group>"; };
+		8369408F263C95D1000D3599 /* 6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 6.txt; sourceTree = "<group>"; };
+		83694091263C95EC000D3599 /* Challenge06.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge06.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +256,7 @@
 				8369407B263AEE12000D3599 /* Challenge03.swift */,
 				83694080263BAF19000D3599 /* Challenge04.swift */,
 				8369408D263C9394000D3599 /* Challenge05.swift */,
+				83694091263C95EC000D3599 /* Challenge06.swift */,
 			);
 			path = Set1;
 			sourceTree = "<group>";
@@ -270,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				8369407E263BAF09000D3599 /* 4.txt */,
+				8369408F263C95D1000D3599 /* 6.txt */,
 			);
 			path = Inputs;
 			sourceTree = "<group>";
@@ -425,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8369407F263BAF09000D3599 /* 4.txt in Resources */,
+				83694090263C95D1000D3599 /* 6.txt in Resources */,
 				834913D32635FB0600892487 /* Preview Assets.xcassets in Resources */,
 				834913D02635FB0600892487 /* Assets.xcassets in Resources */,
 			);
@@ -459,6 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83694081263BAF19000D3599 /* Challenge04.swift in Sources */,
+				83694092263C95EC000D3599 /* Challenge06.swift in Sources */,
 				834913CE2635FB0500892487 /* ContentView.swift in Sources */,
 				83694086263C2E2D000D3599 /* MultipleChallengeRunner.swift in Sources */,
 				834913CC2635FB0500892487 /* CryptopalsApp.swift in Sources */,
