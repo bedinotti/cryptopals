@@ -18,7 +18,8 @@ struct Challenge06: Challenge {
     }
     
     func run() {
-        print("found \(encryptedData.count) bytes to decrypt")
+        let keySize = Analysis.blockSize(in: encryptedData)
+        print("Guessing the key size is \(keySize)")
     }
     
     

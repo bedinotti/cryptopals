@@ -125,26 +125,28 @@ public class Analysis {
                 let secondBlock = encryptedData[  blockBytes ..< 2*blockBytes]
                 let thirdBlock  = encryptedData[2*blockBytes ..< 3*blockBytes]
                 let fourthBlock = encryptedData[3*blockBytes ..< 4*blockBytes]
-//                let fifthBlock  = encryptedData[4*blockBytes ..< 5*blockBytes]
+                let fifthBlock  = encryptedData[4*blockBytes ..< 5*blockBytes]
                 
                 let pairs = [
                     (firstBlock, secondBlock),
                     (firstBlock, thirdBlock),
                     (firstBlock, fourthBlock),
-//                    (firstBlock, fifthBlock),
-//                    (secondBlock, thirdBlock),
-//                    (secondBlock, fourthBlock),
-//                    (thirdBlock, fourthBlock)
+                    (firstBlock, fifthBlock),
+                    (secondBlock, thirdBlock),
+                    (secondBlock, fourthBlock),
+                    (secondBlock, fifthBlock),
+                    (thirdBlock, fourthBlock),
+                    (thirdBlock, fifthBlock),
+                    (fourthBlock, fifthBlock)
                 ]
                 
-                var averageDistance = pairs
+                let sumDistance = pairs
                     .map { (left, right) in
                         Double(Analysis.hammingDistance(left, right))
                     }
                     .reduce(0, +)
                 
-                averageDistance /= Double(pairs.count)
-                let normalized = averageDistance / (Double(blockBytes) * 8.0)
+                let normalized = sumDistance / Double(blockBytes)
 
                 return PartialResult(blockSize: blockBytes, averageHammingDistance: normalized)
             }
