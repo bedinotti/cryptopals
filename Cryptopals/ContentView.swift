@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    let shouldRunAllChallenges = false
+    
     var body: some View {
         Text("Hello, world!")
             .padding()
@@ -16,7 +18,11 @@ struct ContentView: View {
     
     func runCurrentChallenge() {
         if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil {
-            currentChallenge.setupAndRun()
+            if shouldRunAllChallenges {
+                allChallenges.setupAndRun()
+            } else {
+                currentChallenge.setupAndRun()
+            }
         }
     }
 }

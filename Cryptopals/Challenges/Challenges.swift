@@ -8,6 +8,11 @@
 import Foundation
 
 let currentChallenge: Challenge = Challenge03()
+let allChallenges = MultipleChallengeRunner(challenges: [
+    Challenge01(),
+    Challenge02(),
+    Challenge03()
+])
 
 protocol Challenge {
     func setup()
