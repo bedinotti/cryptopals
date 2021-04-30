@@ -7,7 +7,7 @@
 
 import Foundation
 
-var currentChallenge = TimedChallengeRunner(challenge: Challenge06())
+var currentChallenge = TimedChallengeRunner(challenge: Challenge07())
 var allChallenges = MultipleChallengeRunner(challenges: [
     Challenge01(),
     Challenge02(),
@@ -15,6 +15,7 @@ var allChallenges = MultipleChallengeRunner(challenges: [
     Challenge04(),
     Challenge05(),
     Challenge06(),
+    Challenge07(),
 ])
 
 protocol Challenge {
