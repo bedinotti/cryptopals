@@ -86,4 +86,19 @@ public class Analysis {
 
         return letterScoreSum + punctuationScoreSum
     }
+    
+    /// Compute the number of bits that differ between the two data objects
+    /// - Parameters:
+    ///   - from: The first data object to compare
+    ///   - to: The second data object to compare
+    /// - Returns: The number of bits that are different between them.
+    public static func hammingDistance(_ from: Data, _ to: Data) -> Int {
+        0
+    }
+    
+    public static func hammingDistanceForUTF8Strings(_ from: String, _ to: String) -> Int {
+        let fromData = from.data(using: .utf8)!
+        let toData = to.data(using: .utf8)!
+        return hammingDistance(fromData, toData)
+    }
 }
