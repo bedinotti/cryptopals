@@ -7,33 +7,34 @@
 
 import Foundation
 
-let currentChallenge: Challenge = Challenge03()
-let allChallenges = MultipleChallengeRunner(challenges: [
+var currentChallenge = Challenge04()
+var allChallenges = MultipleChallengeRunner(challenges: [
     Challenge01(),
     Challenge02(),
-    Challenge03()
+    Challenge03(),
+    Challenge04(),
 ])
 
 protocol Challenge {
-    func setup()
+    mutating func setup()
     func run()
 }
 
 extension Challenge {
-    func setup() {}
-
-    func setupAndRun() {
+    mutating func setupAndRun() {
         setup()
         run()
     }
 }
 
 class ChallengeRunner: Challenge {
-    private let challenge: Challenge
+    private var challenge: Challenge
     init(challenge: Challenge) {
         self.challenge = challenge
     }
     
+    func setup() {}
+
     func run() {
         challenge.setup()
         challenge.run()
@@ -41,15 +42,17 @@ class ChallengeRunner: Challenge {
 }
 
 class MultipleChallengeRunner: Challenge {
-    private let challenges: [Challenge]
+    private var challenges: [Challenge]
     init(challenges: [Challenge]) {
         self.challenges = challenges
     }
     
+    func setup() {}
+
     func run() {
         challenges.forEach { challenge in
-            challenge.setup()
-            challenge.run()
+            var challenge = challenge
+            challenge.setupAndRun()
         }
     }
 }

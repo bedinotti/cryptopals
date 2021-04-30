@@ -9,6 +9,8 @@ import Foundation
 import CryptoTools
 
 struct Challenge03: Challenge {
+    func setup() {}
+
     private struct PartialResult {
         let characterValue: UInt8
         let score: Double

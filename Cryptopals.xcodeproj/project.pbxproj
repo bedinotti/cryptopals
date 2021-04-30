@@ -28,6 +28,8 @@
 		83694078263AEA31000D3599 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694077263AEA31000D3599 /* Analysis.swift */; };
 		8369407A263AECC5000D3599 /* AnalysisEnglishScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694079263AECC5000D3599 /* AnalysisEnglishScoreTests.swift */; };
 		8369407C263AEE12000D3599 /* Challenge03.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369407B263AEE12000D3599 /* Challenge03.swift */; };
+		8369407F263BAF09000D3599 /* 4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8369407E263BAF09000D3599 /* 4.txt */; };
+		83694081263BAF19000D3599 /* Challenge04.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694080263BAF19000D3599 /* Challenge04.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,8 @@
 		83694077263AEA31000D3599 /* Analysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
 		83694079263AECC5000D3599 /* AnalysisEnglishScoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisEnglishScoreTests.swift; sourceTree = "<group>"; };
 		8369407B263AEE12000D3599 /* Challenge03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge03.swift; sourceTree = "<group>"; };
+		8369407E263BAF09000D3599 /* 4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4.txt; sourceTree = "<group>"; };
+		83694080263BAF19000D3599 /* Challenge04.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge04.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +173,7 @@
 				834913CF2635FB0600892487 /* Assets.xcassets */,
 				834913D42635FB0600892487 /* Info.plist */,
 				834913D52635FB0600892487 /* Cryptopals.entitlements */,
+				8369407D263BAEE3000D3599 /* Inputs */,
 				834914462636625B00892487 /* Challenges */,
 				834913D12635FB0600892487 /* Preview Content */,
 			);
@@ -231,6 +236,7 @@
 				83491450263662A900892487 /* Challenge01.swift */,
 				83694075263A32CB000D3599 /* Challenge02.swift */,
 				8369407B263AEE12000D3599 /* Challenge03.swift */,
+				83694080263BAF19000D3599 /* Challenge04.swift */,
 			);
 			path = Set1;
 			sourceTree = "<group>";
@@ -242,6 +248,14 @@
 				83694071263A30F7000D3599 /* FixedXorCipher.swift */,
 			);
 			path = Ciphers;
+			sourceTree = "<group>";
+		};
+		8369407D263BAEE3000D3599 /* Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				8369407E263BAF09000D3599 /* 4.txt */,
+			);
+			path = Inputs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +398,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8369407F263BAF09000D3599 /* 4.txt in Resources */,
 				834913D32635FB0600892487 /* Preview Assets.xcassets in Resources */,
 				834913D02635FB0600892487 /* Assets.xcassets in Resources */,
 			);
@@ -417,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83694081263BAF19000D3599 /* Challenge04.swift in Sources */,
 				834913CE2635FB0500892487 /* ContentView.swift in Sources */,
 				834913CC2635FB0500892487 /* CryptopalsApp.swift in Sources */,
 				834914492636628D00892487 /* Challenges.swift in Sources */,

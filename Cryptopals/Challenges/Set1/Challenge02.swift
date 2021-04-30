@@ -9,6 +9,8 @@ import Foundation
 import CryptoTools
 
 struct Challenge02: Challenge {
+    func setup() {}
+
     func run() {
         let key = DataDisplay.data(forHexString: "686974207468652062756c6c277320657965")!
         let cipher = FixedXorCipher(key: key)
