@@ -26,33 +26,3 @@ extension Challenge {
         run()
     }
 }
-
-class ChallengeRunner: Challenge {
-    private var challenge: Challenge
-    init(challenge: Challenge) {
-        self.challenge = challenge
-    }
-    
-    func setup() {}
-
-    func run() {
-        challenge.setup()
-        challenge.run()
-    }
-}
-
-class MultipleChallengeRunner: Challenge {
-    private var challenges: [Challenge]
-    init(challenges: [Challenge]) {
-        self.challenges = challenges
-    }
-    
-    func setup() {}
-
-    func run() {
-        challenges.forEach { challenge in
-            var challenge = challenge
-            challenge.setupAndRun()
-        }
-    }
-}
