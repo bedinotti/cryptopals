@@ -93,7 +93,18 @@ public class Analysis {
     ///   - to: The second data object to compare
     /// - Returns: The number of bits that are different between them.
     public static func hammingDistance(_ from: Data, _ to: Data) -> Int {
-        0
+        assert(from.count == to.count)
+        let difference = zip(from, to)
+            .map { pair -> Int in
+                let diffBits: UInt8 = pair.0 ^ pair.1
+                var sum: UInt8 = 0
+                (0..<UInt8(8)).forEach { shiftBy in
+                    sum += (diffBits >> shiftBy) & 0x01
+                }
+                return Int(sum)
+            }
+            .reduce(0, +)
+        return difference
     }
     
     public static func hammingDistanceForUTF8Strings(_ from: String, _ to: String) -> Int {
