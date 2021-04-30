@@ -36,25 +36,54 @@ public class Analysis {
         "x": 0.15,
         "y": 2,
         "z": 0.074,
-        // add low values for punctuation as well
-        " ": 0.05,
-        ".": 0.01,
-        "?": 0.01,
-        ",": 0.01
+    ]
+    
+    // From http://www.viviancook.uk/Punctuation/PunctFigs.htm
+    static let englishPunctuationScore: [Character: Double] = [
+        ".":  65.3 / 1000,
+        ",":  61.6 / 1000,
+        ";":   3.2 / 1000,
+        ":":   3.4 / 1000,
+        "!":   3.3 / 1000,
+        "?":   5.6 / 1000,
+        "'":  24.3 / 1000,
+        "\"": 26.7 / 1000,
+        "-":  15.3 / 1000,
+        " ": 100.0 / 1000,
     ]
     
     /// Analyze the given text and return a score based on how much the text looks like normal English. This is a relative score -- the value is irrelevant on its own, but is useful when compared to other texts scored with this same function.
     /// - Parameter text: The text to score
     /// - Returns: A number representing how English the text is. Higher scores are better.
     public static func englishScore(for text: String) -> Double {
-        let capitalMultiplier = 0.9 // value capital letters a little less.
-        let score = text
-            .map { letter -> Double in
-                let multiplier = letter.isUppercase ? capitalMultiplier : 1.0
-                let lowercased = Character(letter.lowercased())
-                return multiplier * englishLetterScore[lowercased, default: 0.0]
-            }
-            .reduce(0, +)
-        return score
+        var characterFrequencies = [Character: Double]()
+        
+        // Accumulate character counts
+        text.forEach { letter in
+            let currentCount = characterFrequencies[letter, default: 0]
+            characterFrequencies[letter] = currentCount + 1
+        }
+        
+        // Divide by total characters
+        characterFrequencies.forEach { (key: Character, value: Double) in
+            characterFrequencies[key] = value / Double(text.count)
+        }
+
+        let perfectScore = 100.0
+        func letterScore(expectedFrequency: Double, actualFrequency: Double) -> Double {
+            max(perfectScore - pow(abs(expectedFrequency - actualFrequency), 2.0), 0)
+        }
+        
+        let letterScoreSum = englishLetterScore.reduce(0.0) { sum, pair in
+            let actualFrequency = characterFrequencies[pair.key, default: 0.0]
+            return sum + letterScore(expectedFrequency: pair.value, actualFrequency: actualFrequency)
+        }
+        
+        let punctuationScoreSum = englishPunctuationScore.reduce(0.0) { sum, pair in
+            let actualFrequency = characterFrequencies[pair.key, default: 0.0]
+            return sum + letterScore(expectedFrequency: pair.value, actualFrequency: actualFrequency)
+        }
+
+        return letterScoreSum + punctuationScoreSum
     }
 }
