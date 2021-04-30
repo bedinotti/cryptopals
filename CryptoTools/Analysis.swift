@@ -114,6 +114,55 @@ public class Analysis {
     }
     
     public static func blockSize(in encryptedData: Data) -> Int {
-        0
+        struct PartialResult {
+            let blockSize: Int
+            let averageHammingDistance: Double
+        }
+        
+        let results = (2...40)
+            .map { blockBytes -> PartialResult in
+                let firstBlock  = encryptedData[           0 ..<   blockBytes]
+                let secondBlock = encryptedData[  blockBytes ..< 2*blockBytes]
+                let thirdBlock  = encryptedData[2*blockBytes ..< 3*blockBytes]
+                let fourthBlock = encryptedData[3*blockBytes ..< 4*blockBytes]
+//                let fifthBlock  = encryptedData[4*blockBytes ..< 5*blockBytes]
+                
+                let pairs = [
+                    (firstBlock, secondBlock),
+                    (firstBlock, thirdBlock),
+                    (firstBlock, fourthBlock),
+//                    (firstBlock, fifthBlock),
+//                    (secondBlock, thirdBlock),
+//                    (secondBlock, fourthBlock),
+//                    (thirdBlock, fourthBlock)
+                ]
+                
+                var averageDistance = pairs
+                    .map { (left, right) in
+                        Double(Analysis.hammingDistance(left, right))
+                    }
+                    .reduce(0, +)
+                
+                averageDistance /= Double(pairs.count)
+                let normalized = averageDistance / (Double(blockBytes) * 8.0)
+
+                return PartialResult(blockSize: blockBytes, averageHammingDistance: normalized)
+            }
+
+        let smallestScore = results.reduce(results.first!) { previous, current in
+            if previous.averageHammingDistance < current.averageHammingDistance {
+                return previous
+            } else if previous.averageHammingDistance == current.averageHammingDistance {
+                if previous.blockSize < current.blockSize {
+                    return previous
+                } else {
+                    return current
+                }
+            } else {
+                return current
+            }
+        }
+            
+        return smallestScore.blockSize
     }
 }

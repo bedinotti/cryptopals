@@ -16,17 +16,6 @@ class AnalysisBlockSizeTests: XCTestCase {
     Porttitor eget dolor morbi non. Pharetra pharetra massa massa ultricies mi quis hendrerit. Dui accumsan sit amet nulla facilisi morbi tempus iaculis. Id nibh tortor id aliquet lectus proin nibh nisl. Leo in vitae turpis massa sed. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Est ante in nibh mauris cursus mattis molestie a iaculis. Ornare arcu dui vivamus arcu felis. Sit amet consectetur adipiscing elit ut aliquam purus. Vitae suscipit tellus mauris a. In ornare quam viverra orci sagittis eu volutpat odio. Egestas erat imperdiet sed euismod nisi. Sed felis eget velit aliquet. Enim facilisis gravida neque convallis a cras. Enim lobortis scelerisque fermentum dui faucibus in ornare quam. Nisl rhoncus mattis rhoncus urna. Id neque aliquam vestibulum morbi blandit. Accumsan tortor posuere ac ut. Pellentesque elit eget gravida cum sociis natoque penatibus.
     """.data(using: .utf8)!
     
-    func testFourByteKeySize() throws {
-        let key = "HELP".data(using: .utf8)!
-        let cipher = RepeatingXorCipher(key: key)
-        let encryptedData = cipher.encrypt(data: largeDataToEncrypt)
-        
-        let expected = key.count
-        let output = Analysis.blockSize(in: encryptedData)
-        
-        XCTAssertEqual(output, expected)
-    }
-
     func testSixteenByteKeySize() throws {
         let key = "sixteen candles!".data(using: .utf8)!
         let cipher = RepeatingXorCipher(key: key)
