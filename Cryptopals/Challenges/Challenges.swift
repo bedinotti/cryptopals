@@ -7,8 +7,44 @@
 
 import Foundation
 
-enum Challenge {
-    case one
+let currentChallenge: Challenge = Challenge03()
+
+protocol Challenge {
+    func setup()
+    func run()
+}
+
+extension Challenge {
+    func setup() {}
+
+    func setupAndRun() {
+        setup()
+        run()
+    }
+}
+
+class ChallengeRunner: Challenge {
+    private let challenge: Challenge
+    init(challenge: Challenge) {
+        self.challenge = challenge
+    }
     
-    static let current: () -> Void = ChallengeThree.run
+    func run() {
+        challenge.setup()
+        challenge.run()
+    }
+}
+
+class MultipleChallengeRunner: Challenge {
+    private let challenges: [Challenge]
+    init(challenges: [Challenge]) {
+        self.challenges = challenges
+    }
+    
+    func run() {
+        challenges.forEach { challenge in
+            challenge.setup()
+            challenge.run()
+        }
+    }
 }

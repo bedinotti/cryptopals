@@ -8,12 +8,13 @@
 import Foundation
 import CryptoTools
 
-enum ChallengeThree {
-    struct PartialResult {
+struct Challenge03: Challenge {
+    private struct PartialResult {
         let characterValue: UInt8
         let score: Double
     }
-    static func run() {
+    
+    func run() {
         let ciphertext = DataDisplay.data(forHexString: "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736")!
         
         let bestResult = (0...UInt8.max)
