@@ -33,6 +33,8 @@
 		83694084263C2E16000D3599 /* ChallengeRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694083263C2E16000D3599 /* ChallengeRunner.swift */; };
 		83694086263C2E2D000D3599 /* MultipleChallengeRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694085263C2E2D000D3599 /* MultipleChallengeRunner.swift */; };
 		83694088263C2E71000D3599 /* TimedChallengeRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694087263C2E71000D3599 /* TimedChallengeRunner.swift */; };
+		8369408A263C91C9000D3599 /* RepeatingXorCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694089263C91C9000D3599 /* RepeatingXorCipher.swift */; };
+		8369408C263C91D7000D3599 /* RepeatingXorCipherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369408B263C91D7000D3599 /* RepeatingXorCipherTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +115,8 @@
 		83694083263C2E16000D3599 /* ChallengeRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRunner.swift; sourceTree = "<group>"; };
 		83694085263C2E2D000D3599 /* MultipleChallengeRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChallengeRunner.swift; sourceTree = "<group>"; };
 		83694087263C2E71000D3599 /* TimedChallengeRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimedChallengeRunner.swift; sourceTree = "<group>"; };
+		83694089263C91C9000D3599 /* RepeatingXorCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingXorCipher.swift; sourceTree = "<group>"; };
+		8369408B263C91D7000D3599 /* RepeatingXorCipherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingXorCipherTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +227,7 @@
 				8349140E2635FB7900892487 /* DataDisplayHexStringTests.swift */,
 				8349144126360AB400892487 /* DataDisplayBase64Tests.swift */,
 				83694073263A31E3000D3599 /* FixedXorCipherTests.swift */,
+				8369408B263C91D7000D3599 /* RepeatingXorCipherTests.swift */,
 				834914102635FB7900892487 /* Info.plist */,
 			);
 			path = CryptoToolsTests;
@@ -253,6 +258,7 @@
 			children = (
 				8369406E263A308B000D3599 /* Cipher.swift */,
 				83694071263A30F7000D3599 /* FixedXorCipher.swift */,
+				83694089263C91C9000D3599 /* RepeatingXorCipher.swift */,
 			);
 			path = Ciphers;
 			sourceTree = "<group>";
@@ -477,6 +483,7 @@
 				8369406F263A308B000D3599 /* Cipher.swift in Sources */,
 				83694078263AEA31000D3599 /* Analysis.swift in Sources */,
 				83694072263A30F7000D3599 /* FixedXorCipher.swift in Sources */,
+				8369408A263C91C9000D3599 /* RepeatingXorCipher.swift in Sources */,
 				834914322635FDA400892487 /* DataDisplay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +494,7 @@
 			files = (
 				8349140F2635FB7900892487 /* DataDisplayHexStringTests.swift in Sources */,
 				83694074263A31E3000D3599 /* FixedXorCipherTests.swift in Sources */,
+				8369408C263C91D7000D3599 /* RepeatingXorCipherTests.swift in Sources */,
 				8349144226360AB400892487 /* DataDisplayBase64Tests.swift in Sources */,
 				8369407A263AECC5000D3599 /* AnalysisEnglishScoreTests.swift in Sources */,
 			);
