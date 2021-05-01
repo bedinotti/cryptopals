@@ -9,7 +9,7 @@ import Foundation
 import CryptoTools
 
 struct Challenge02: Challenge {
-    let id = 2
+    static let id = 2
     
     func run() {
         let key = DataDisplay.data(forHexString: "686974207468652062756c6c277320657965")!

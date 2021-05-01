@@ -9,7 +9,7 @@ import Foundation
 import CryptoTools
 
 struct Challenge03: Challenge {
-    let id = 3
+    static let id = 3
     
     private struct PartialResult {
         let characterValue: UInt8

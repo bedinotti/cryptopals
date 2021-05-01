@@ -9,7 +9,7 @@ import Foundation
 import CryptoTools
 
 struct Challenge05: Challenge {
-    let id = 5
+    static let id = 5
     
     func run() {
         let key = "ICE".data(using: .utf8)!

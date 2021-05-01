@@ -9,7 +9,7 @@ import Foundation
 import CryptoTools
 
 struct Challenge06: Challenge {
-    let id = 6
+    static let id = 6
     private let encryptedData: Data
     
     init() {

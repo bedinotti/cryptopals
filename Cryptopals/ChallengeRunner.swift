@@ -23,8 +23,9 @@ class ChallengeRunner {
     /// Run all of the challenges
     func run() {
         types.forEach { challengeType in
+            let challengeID = challengeType.id
+            print("==== Challenge \(challengeID) ===")
             let challenge = challengeType.init()
-            print("==== Challenge \(challenge.id) ===")
             let nanoseconds: UInt64?
             if shouldMeasureRuntime {
                 nanoseconds = measure {
@@ -36,9 +37,9 @@ class ChallengeRunner {
             }
             
             if let nanoseconds = nanoseconds {
-                print("==== Challenge \(challenge.id) Finished Running in \(formatNanoseconds(nanoseconds)) ===\n")
+                print("==== Challenge \(challengeID) Finished Running in \(formatNanoseconds(nanoseconds)) ===\n")
             } else {
-                print("==== Challenge \(challenge.id) Finished Running ===\n")
+                print("==== Challenge \(challengeID) Finished Running ===\n")
             }
         }
     }
