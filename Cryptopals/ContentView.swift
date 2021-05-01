@@ -18,13 +18,9 @@ struct ContentView: View {
     
     func runCurrentChallenge() {
         if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil {
-            if shouldRunAllChallenges {
-                let runner = MultipleChallengeRunner(types: Challenges.all)
-                runner.run()
-            } else {
-                let runner = TimedChallengeRunner(challengeType: Challenges.current)
-                runner.run()
-            }
+            let types = shouldRunAllChallenges ? Challenges.all : [Challenges.current]
+            let runner = ChallengeRunner(challengeTypes: types)
+            runner.run()
         }
     }
 }
