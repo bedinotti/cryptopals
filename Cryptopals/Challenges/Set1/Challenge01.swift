@@ -18,12 +18,11 @@ struct Challenge01: Challenge {
         let expectedBase64 = "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t"
         
         guard let data = DataDisplay.data(forHexString: hexString) else {
-            subject.send(.message("Hex string is invalid"))
+            update("Hex string is invalid")
             return
         }
         let result = DataDisplay.base64String(for: data)
         
-        subject.send(.completed(success: expectedBase64 == result))
-        subject.send(completion: .finished)
+        complete(success: expectedBase64 == result)
     }
 }

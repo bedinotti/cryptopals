@@ -27,7 +27,7 @@ extension Challenge {
         subject.send(.finished)
     }
     
-    func update(message: String) {
+    func update(_ message: String) {
         subject.send(.message(message))
     }
     
