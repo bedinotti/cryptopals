@@ -9,7 +9,8 @@ import Foundation
 import CryptoTools
 
 struct Challenge06: Challenge {
-    var encryptedData: Data
+    let id = 6
+    private let encryptedData: Data
     
     init() {
         let file = Bundle.main.url(forResource: "6", withExtension: "txt")!

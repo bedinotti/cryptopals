@@ -9,7 +9,8 @@ import Foundation
 import CryptoTools
 
 struct Challenge04: Challenge {
-    var input: [Data]
+    let id = 4
+    private let input: [Data]
     
     init() {
         let url = Bundle.main.url(forResource: "4", withExtension: "txt")!

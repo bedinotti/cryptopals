@@ -9,7 +9,8 @@ import Foundation
 import CryptoTools
 
 struct Challenge07: Challenge {
-    var encryptedData: Data
+    let id = 7
+    private let encryptedData: Data
     
     init() {
         let url = Bundle.main.url(forResource: "7", withExtension: "txt")!

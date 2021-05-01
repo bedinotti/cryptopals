@@ -8,6 +8,8 @@
 import Foundation
 
 protocol Challenge {
+    var id: Int { get }
+
     init()
     func run()
 }
