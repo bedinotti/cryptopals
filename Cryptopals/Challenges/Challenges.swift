@@ -20,6 +20,20 @@ extension Challenge {
     var publisher: AnyPublisher<ChallengeUpdate, Error> {
         subject.eraseToAnyPublisher()
     }
+    
+    func runWithUpdates() {
+        subject.send(.started)
+        run()
+        subject.send(.finished)
+    }
+    
+    func update(message: String) {
+        subject.send(.message(message))
+    }
+    
+    func complete(success: Bool) {
+        subject.send(.completed(success: success))
+    }
 }
 
 enum ChallengeUpdate {
