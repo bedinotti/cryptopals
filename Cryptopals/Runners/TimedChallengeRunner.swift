@@ -7,21 +7,21 @@
 
 import Foundation
 
-class TimedChallengeRunner: Challenge {
-    private var challenge: Challenge
+class TimedChallengeRunner {
+    private var type: Challenge.Type
     
-    init(challenge: Challenge) {
-        self.challenge = challenge
+    init(challengeType: Challenge.Type) {
+        type = challengeType
     }
-    
-    func setup() {
-        challenge.setup()
-    }
-    
+
     func run() {
+        var challenge = type.init()
+        challenge.setup()
+        
         let start = DispatchTime.now()
         challenge.run()
         let end = DispatchTime.now()
+        
         let difference = formatNanoseconds(end.uptimeNanoseconds - start.uptimeNanoseconds)
         print("Completed challenge in \(difference)")
     }

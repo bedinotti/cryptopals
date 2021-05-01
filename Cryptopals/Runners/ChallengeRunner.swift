@@ -7,15 +7,14 @@
 
 import Foundation
 
-class ChallengeRunner: Challenge {
-    private var challenge: Challenge
-    init(challenge: Challenge) {
-        self.challenge = challenge
+class ChallengeRunner {
+    private var type: Challenge.Type
+    init(challengeType: Challenge.Type) {
+        type = challengeType
     }
-    
-    func setup() {}
 
     func run() {
+        var challenge = type.init()
         challenge.setup()
         challenge.run()
     }

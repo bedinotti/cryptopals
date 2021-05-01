@@ -7,17 +7,15 @@
 
 import Foundation
 
-class MultipleChallengeRunner: Challenge {
-    private var challenges: [Challenge]
-    init(challenges: [Challenge]) {
-        self.challenges = challenges
+class MultipleChallengeRunner {
+    private var types: [Challenge.Type]
+    init(types: [Challenge.Type]) {
+        self.types = types
     }
     
-    func setup() {}
-
     func run() {
-        challenges.forEach { challenge in
-            var challenge = challenge
+        types.forEach { challengeType in
+            var challenge = challengeType.init()
             challenge.setupAndRun()
         }
     }
