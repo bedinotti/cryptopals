@@ -9,9 +9,9 @@ import Foundation
 import CryptoTools
 
 struct Challenge04: Challenge {
-    var input: [Data]!
+    var input: [Data]
     
-    mutating func setup() {
+    init() {
         let url = Bundle.main.url(forResource: "4", withExtension: "txt")!
         let hexFile = try! String(contentsOf: url)
         input = hexFile

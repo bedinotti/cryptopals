@@ -15,8 +15,7 @@ class TimedChallengeRunner {
     }
 
     func run() {
-        var challenge = type.init()
-        challenge.setup()
+        let challenge = type.init()
         
         let start = DispatchTime.now()
         challenge.run()

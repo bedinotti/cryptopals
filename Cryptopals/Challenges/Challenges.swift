@@ -9,15 +9,7 @@ import Foundation
 
 protocol Challenge {
     init()
-    mutating func setup()
     func run()
-}
-
-extension Challenge {
-    mutating func setupAndRun() {
-        setup()
-        run()
-    }
 }
 
 enum Challenges {

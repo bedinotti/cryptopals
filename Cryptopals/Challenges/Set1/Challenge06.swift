@@ -9,9 +9,9 @@ import Foundation
 import CryptoTools
 
 struct Challenge06: Challenge {
-    var encryptedData: Data!
+    var encryptedData: Data
     
-    mutating func setup() {
+    init() {
         let file = Bundle.main.url(forResource: "6", withExtension: "txt")!
         let contents = try! String(contentsOf: file).replacingOccurrences(of: "\n", with: "")
         encryptedData = DataDisplay.data(forBase64String: contents)!

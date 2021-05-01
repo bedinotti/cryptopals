@@ -14,8 +14,7 @@ class ChallengeRunner {
     }
 
     func run() {
-        var challenge = type.init()
-        challenge.setup()
+        let challenge = type.init()
         challenge.run()
     }
 }

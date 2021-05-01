@@ -9,8 +9,6 @@ import Foundation
 import CryptoTools
 
 struct Challenge05: Challenge {
-    mutating func setup() {}
-    
     func run() {
         let key = "ICE".data(using: .utf8)!
         let cipher = RepeatingXorCipher(key: key)

@@ -15,8 +15,8 @@ class MultipleChallengeRunner {
     
     func run() {
         types.forEach { challengeType in
-            var challenge = challengeType.init()
-            challenge.setupAndRun()
+            let challenge = challengeType.init()
+            challenge.run()
         }
     }
 }
