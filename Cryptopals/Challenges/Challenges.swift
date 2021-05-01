@@ -6,16 +6,31 @@
 //
 
 import Foundation
+import Combine
 
 protocol Challenge {
     static var id: Int { get }
+    var subject: PassthroughSubject<ChallengeUpdate, Error> { get }
 
     init()
     func run()
 }
 
+extension Challenge {
+    var publisher: AnyPublisher<ChallengeUpdate, Error> {
+        subject.eraseToAnyPublisher()
+    }
+}
+
+enum ChallengeUpdate {
+    case started
+    case message(_: String)
+    case completed(success: Bool)
+    case finished
+}
+
 enum Challenges {
-    static let current: Challenge.Type = Challenge07.self
+    static let current: Challenge.Type = Challenge01.self
     static let all: [Challenge.Type] = [
         Challenge01.self,
         Challenge02.self,

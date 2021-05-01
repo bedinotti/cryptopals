@@ -10,6 +10,7 @@ import Foundation
 class ChallengeRunner {
     var types: [Challenge.Type]
     private let shouldMeasureRuntime: Bool
+    private var runtimeInNanoseconds: UInt64?
     
     convenience init(challengeType: Challenge.Type) {
         self.init(challengeTypes: [challengeType])
@@ -26,20 +27,46 @@ class ChallengeRunner {
             let challengeID = challengeType.id
             print("==== Challenge \(challengeID) ===")
             let challenge = challengeType.init()
-            let nanoseconds: UInt64?
+            let subscription = challenge.publisher.sink { completion in
+                switch completion {
+                case .finished:
+                    self.printUpdate(.finished, id: challengeID)
+                case .failure(let error):
+                    // TODO: What should I do here?
+                    print("\(challengeID) failed with error: \(error)")
+                }
+            } receiveValue: { update in
+                self.printUpdate(update, id: challengeID)
+            }
+
             if shouldMeasureRuntime {
-                nanoseconds = measure {
+                runtimeInNanoseconds = measure {
                     challenge.run()
                 }
             } else {
-                nanoseconds = nil
+                runtimeInNanoseconds = nil
                 challenge.run()
             }
-            
-            if let nanoseconds = nanoseconds {
-                print("==== Challenge \(challengeID) Finished Running in \(formatNanoseconds(nanoseconds)) ===\n")
+        }
+    }
+    
+    private func printUpdate(_ update: ChallengeUpdate, id: Int) {
+        switch update {
+        case .started:
+            print("==== Challenge \(id) Started ===")
+        case .message(let string):
+            print(string)
+        case .completed(let success):
+            if success {
+                print("🎉 Challenge \(id) Success! 🎉")
             } else {
-                print("==== Challenge \(challengeID) Finished Running ===\n")
+                print("❌ Challenge \(id) failed... ❌")
+            }
+        case .finished:
+            if let nanoseconds = runtimeInNanoseconds {
+                print("==== Challenge \(id) Finished Running in \(formatNanoseconds(nanoseconds)) ===\n")
+            } else {
+                print("==== Challenge \(id) Finished Running ===\n")
             }
         }
     }

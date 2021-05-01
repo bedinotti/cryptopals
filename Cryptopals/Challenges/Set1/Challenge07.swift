@@ -5,11 +5,13 @@
 //  Created by Chris Downie on 4/30/21.
 //
 
-import Foundation
+import Combine
 import CryptoTools
+import Foundation
 
 struct Challenge07: Challenge {
     static let id = 7
+    let subject = PassthroughSubject<ChallengeUpdate, Error>()
     private let encryptedData: Data
     
     init() {

@@ -5,11 +5,13 @@
 //  Created by Chris Downie on 4/30/21.
 //
 
-import Foundation
+import Combine
 import CryptoTools
+import Foundation
 
 struct Challenge05: Challenge {
     static let id = 5
+    let subject = PassthroughSubject<ChallengeUpdate, Error>()
     
     func run() {
         let key = "ICE".data(using: .utf8)!

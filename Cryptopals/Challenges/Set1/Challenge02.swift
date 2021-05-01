@@ -5,11 +5,13 @@
 //  Created by Chris Downie on 4/28/21.
 //
 
-import Foundation
+import Combine
 import CryptoTools
+import Foundation
 
 struct Challenge02: Challenge {
     static let id = 2
+    let subject = PassthroughSubject<ChallengeUpdate, Error>()
     
     func run() {
         let key = DataDisplay.data(forHexString: "686974207468652062756c6c277320657965")!
