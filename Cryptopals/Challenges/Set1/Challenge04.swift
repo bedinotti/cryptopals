@@ -70,6 +70,6 @@ struct Challenge04: Challenge {
         }
         
         let result = bestPartialResult!
-        print("Challenge 4: 0x\(String(result.key, radix: 16)) decodes one line to: \(result.plaintext)")
+        update("0x\(String(result.key, radix: 16)) decodes one line to: \(result.plaintext)")
     }
 }

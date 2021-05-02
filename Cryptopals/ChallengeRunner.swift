@@ -54,7 +54,7 @@ class ChallengeRunner {
     private func printUpdate(_ update: ChallengeUpdate, id: Int) {
         switch update {
         case .started:
-            print("==== Challenge \(id) Started ===")
+            print("==== Challenge \(id) Started ====")
         case .message(let string):
             print(string)
         case .completed(let success):
@@ -67,9 +67,9 @@ class ChallengeRunner {
             let endTime = DispatchTime.now().uptimeNanoseconds
             if let startTime = startTimeInNanoseconds {
                 let nanoseconds = endTime - startTime
-                print("==== Challenge \(id) Finished Running in \(formatNanoseconds(nanoseconds)) ===\n")
+                print("==== Challenge \(id) Finished Running in \(formatNanoseconds(nanoseconds)) ====\n")
             } else {
-                print("==== Challenge \(id) Finished Running ===\n")
+                print("==== Challenge \(id) Finished Running ====\n")
             }
         }
     }

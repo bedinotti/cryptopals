@@ -22,7 +22,7 @@ struct Challenge06: Challenge {
     
     func run() {
         let keySize = Analysis.blockSize(in: encryptedData)
-        print("Guessing the key size is \(keySize)")
+        update("Guessing the key size is \(keySize)")
         
         var blocks = [Data]()
         for index in stride(from: 0, to: encryptedData.count, by: keySize) {
@@ -70,14 +70,11 @@ struct Challenge06: Challenge {
         }
         
         let key = Data(likelyKeys)
-        print("I think the key is \(String(decoding: key, as: UTF8.self))")
+        update("I think the key is \(String(decoding: key, as: UTF8.self))")
         
         let finalCipher = RepeatingXorCipher(key: key)
         let decryptedData = finalCipher.decrypt(data: encryptedData)
         
-        print("Output:\n\(String(decoding: decryptedData, as: UTF8.self))")
-        
+        update("Output:\n\(String(decoding: decryptedData, as: UTF8.self))")
     }
-    
-    
 }

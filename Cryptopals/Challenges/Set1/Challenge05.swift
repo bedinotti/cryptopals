@@ -29,10 +29,6 @@ struct Challenge05: Challenge {
         
         let encryptedData = cipher.encrypt(data: input)
         
-        if encryptedData == expected {
-            print("🎉Challenge Five Completed!🎉")
-        } else {
-            print("❌ Encrypted output did not match. ❌")
-        }
+        complete(success: encryptedData == expected)
     }
 }

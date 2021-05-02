@@ -21,10 +21,6 @@ struct Challenge02: Challenge {
         let expected = DataDisplay.data(forHexString: "746865206b696420646f6e277420706c6179")!
         let output = cipher.decrypt(data: input)
         
-        if output == expected {
-            print("🎉 Challenge Two Success! 🎉")
-        } else {
-            print("❌ Decrypted output did not match. ❌")
-        }
+        complete(success: output == expected)
     }
 }

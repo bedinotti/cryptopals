@@ -42,6 +42,6 @@ struct Challenge03: Challenge {
         let bestDecryption = finalCipher.decrypt(data: ciphertext)
         let bestDecryptionString = String(decoding: bestDecryption, as: UTF8.self)
         
-        print("Challenge 3: Decrypted \(bestDecryptionString)")
+        update("Decrypted: \(bestDecryptionString)")
     }
 }

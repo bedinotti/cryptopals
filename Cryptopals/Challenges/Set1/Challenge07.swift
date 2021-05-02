@@ -22,6 +22,6 @@ struct Challenge07: Challenge {
     }
     
     func run() {
-        print("Not implemented")
+        update("Not implemented")
     }
 }
