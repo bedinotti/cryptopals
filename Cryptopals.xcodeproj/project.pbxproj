@@ -42,6 +42,8 @@
 		8369409A263CC3BC000D3599 /* Challenge07.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694099263CC3BC000D3599 /* Challenge07.swift */; };
 		8369409D263CC6A2000D3599 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8369409C263CC6A2000D3599 /* CryptoSwift */; };
 		8369409F263CC6DF000D3599 /* AES128ECBCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369409E263CC6DF000D3599 /* AES128ECBCipher.swift */; };
+		836940A1263EE487000D3599 /* 8.txt in Resources */ = {isa = PBXBuildFile; fileRef = 836940A0263EE487000D3599 /* 8.txt */; };
+		836940A3263EE495000D3599 /* Challenge08.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836940A2263EE495000D3599 /* Challenge08.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +132,8 @@
 		83694097263CC3AE000D3599 /* 7.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 7.txt; sourceTree = "<group>"; };
 		83694099263CC3BC000D3599 /* Challenge07.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge07.swift; sourceTree = "<group>"; };
 		8369409E263CC6DF000D3599 /* AES128ECBCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES128ECBCipher.swift; sourceTree = "<group>"; };
+		836940A0263EE487000D3599 /* 8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 8.txt; sourceTree = "<group>"; };
+		836940A2263EE495000D3599 /* Challenge08.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge08.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +272,7 @@
 				8369408D263C9394000D3599 /* Challenge05.swift */,
 				83694091263C95EC000D3599 /* Challenge06.swift */,
 				83694099263CC3BC000D3599 /* Challenge07.swift */,
+				836940A2263EE495000D3599 /* Challenge08.swift */,
 			);
 			path = Set1;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 				8369407E263BAF09000D3599 /* 4.txt */,
 				8369408F263C95D1000D3599 /* 6.txt */,
 				83694097263CC3AE000D3599 /* 7.txt */,
+				836940A0263EE487000D3599 /* 8.txt */,
 			);
 			path = Inputs;
 			sourceTree = "<group>";
@@ -442,6 +448,7 @@
 				8369407F263BAF09000D3599 /* 4.txt in Resources */,
 				83694090263C95D1000D3599 /* 6.txt in Resources */,
 				834913D32635FB0600892487 /* Preview Assets.xcassets in Resources */,
+				836940A1263EE487000D3599 /* 8.txt in Resources */,
 				834913D02635FB0600892487 /* Assets.xcassets in Resources */,
 				83694098263CC3AE000D3599 /* 7.txt in Resources */,
 			);
@@ -482,6 +489,7 @@
 				834914492636628D00892487 /* Challenges.swift in Sources */,
 				8369408E263C9394000D3599 /* Challenge05.swift in Sources */,
 				83694076263A32CB000D3599 /* Challenge02.swift in Sources */,
+				836940A3263EE495000D3599 /* Challenge08.swift in Sources */,
 				8369409A263CC3BC000D3599 /* Challenge07.swift in Sources */,
 				83694084263C2E16000D3599 /* ChallengeRunner.swift in Sources */,
 				8369407C263AEE12000D3599 /* Challenge03.swift in Sources */,
