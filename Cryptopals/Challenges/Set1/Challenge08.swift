@@ -25,6 +25,32 @@ struct Challenge08: Challenge {
     }
     
     func run() {
-        update("Not implemented yet")
+        struct PartialResult {
+            let ciphertext: Data
+            let duplicatedBlockCount: Int
+        }
+        
+        let blockSize = 16
+        let partials = input.map { data -> PartialResult in
+            var foundBlocks = Set<Data>()
+            var duplicatedBlockCount = 0
+            
+            for index in stride(from: 0, to: data.count, by: blockSize) {
+                let subset = data[index..<min(index+blockSize, data.count)]
+                if foundBlocks.contains(subset) {
+                    duplicatedBlockCount += 1
+                }
+                foundBlocks.insert(subset)
+            }
+            
+            return PartialResult(ciphertext: data, duplicatedBlockCount: duplicatedBlockCount)
+        }
+        
+        let sortedResult = partials.sorted { left, right in
+            left.duplicatedBlockCount > right.duplicatedBlockCount
+        }
+        
+        let likelyCBC = sortedResult.first!
+        update("This is CBC with \(likelyCBC.duplicatedBlockCount) repeated blocks: \(DataDisplay.hexString(for: likelyCBC.ciphertext))")
     }
 }
