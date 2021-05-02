@@ -44,7 +44,7 @@ enum ChallengeUpdate {
 }
 
 enum Challenges {
-    static let current: Challenge.Type = Challenge01.self
+    static let current: Challenge.Type = Challenge07.self
     static let all: [Challenge.Type] = [
         Challenge01.self,
         Challenge02.self,

@@ -10,9 +10,10 @@ import CryptoSwift
 
 public class AES128ECBCipher: Cipher {
     private let aes: AES
-    init(key: Data, hasPadding: Bool = true) {
+    public init(key: Data, hasPadding: Bool = true) {
         aes = try! AES(key: key.bytes, blockMode: ECB(), padding: hasPadding ? .pkcs7 : .noPadding)
     }
+    
     public func encrypt(data: Data) -> Data {
         let bytes = try! aes.encrypt(data.bytes)
         return Data(bytes)
