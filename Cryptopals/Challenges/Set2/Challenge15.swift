@@ -20,7 +20,9 @@ struct Challenge15: Challenge {
         
         do {
             let result = try Padding.stripPKCS7(from: firstExample, blockSize: AES128CBCCipher.blockSize)
-            update("🎉 Valid input decrypted to >\(String(decoding: result, as: UTF8.self))<")
+            let resultString = String(decoding: result, as: UTF8.self)
+            let expected = "ICE ICE BABY"
+            update("🎉 Valid input decrypted \(resultString == expected ? "correctly" : "incorrectly")")
         } catch Padding.Error.invalidPadding {
             update("❌ Valid input failed with invalid padding error.")
         } catch {

@@ -20,7 +20,22 @@ public enum Padding {
         return result
     }
     
-    public static func stripPKCS7(from: Data, blockSize: Int) throws -> Data {
-        throw Error.invalidPadding
+    public static func stripPKCS7(from data: Data, blockSize: Int) throws -> Data {
+        guard let paddingSize = data.last else {
+            throw Error.invalidPadding
+        }
+        
+        // validate
+        let start = data.count - Int(paddingSize)
+        guard start >= 0 else {
+            throw Error.invalidPadding
+        }
+        for byte in data[start...] {
+            guard byte == paddingSize else {
+                throw Error.invalidPadding
+            }
+        }
+
+        return data.dropLast(Int(paddingSize))
     }
 }
