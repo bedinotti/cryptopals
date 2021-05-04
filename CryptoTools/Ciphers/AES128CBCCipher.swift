@@ -7,8 +7,8 @@
 
 import Foundation
 
-final class AES128CBCCipher: Cipher {
-    private static let blockSize = 16
+final public class AES128CBCCipher: Cipher {
+    public static let blockSize = 16
     private var blockSize: Int {
         Self.blockSize
     }
@@ -17,7 +17,7 @@ final class AES128CBCCipher: Cipher {
     private let shouldPadData: Bool
     private let ecbCipher: AES128ECBCipher
     
-    init(key: Data, initializationVector iv: Data, hasPadding: Bool = true) {
+    public init(key: Data, initializationVector iv: Data, hasPadding: Bool = true) {
         precondition(key.count == Self.blockSize)
         precondition(iv.count == Self.blockSize)
         
@@ -28,7 +28,7 @@ final class AES128CBCCipher: Cipher {
         ecbCipher = AES128ECBCipher(key: key, hasPadding: false)
     }
     
-    func encrypt(data: Data) -> Data {
+    public func encrypt(data: Data) -> Data {
         let dataToEncrypt: Data
         if shouldPadData {
             dataToEncrypt = Padding.pkcs7(data, blockSize: blockSize)
@@ -54,7 +54,7 @@ final class AES128CBCCipher: Cipher {
         return encryptedData
     }
     
-    func decrypt(data: Data) -> Data {
+    public func decrypt(data: Data) -> Data {
         Data()
     }
 }
