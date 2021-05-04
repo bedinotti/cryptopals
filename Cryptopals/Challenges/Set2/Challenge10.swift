@@ -22,7 +22,7 @@ struct Challenge10: Challenge {
     
     func run() {
         let key = "YELLOW SUBMARINE".data(using: .utf8)!
-        let cipher = AES128CBCCipher(key: key, initializationVector: Data(repeating: 0x00, count: AES128CBCCipher.blockSize))
+        let cipher = AES128.CBCCipher(key: key, initializationVector: Data(repeating: 0x00, count: AES128.blockSize))
         // Note: I had to do challenge 15 before this one worked
         let result = try! cipher.decrypt(data: encryptedData)
         

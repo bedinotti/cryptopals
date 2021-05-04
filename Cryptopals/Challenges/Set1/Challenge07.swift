@@ -23,7 +23,7 @@ struct Challenge07: Challenge {
     
     func run() {
         let key = "YELLOW SUBMARINE".data(using: .utf8)!
-        let cipher = AES128ECBCipher(key: key)
+        let cipher = AES128.ECBCipher(key: key)
         
         let output = try! cipher.decrypt(data: encryptedData)
         let outString = String(decoding: output, as: UTF8.self)
