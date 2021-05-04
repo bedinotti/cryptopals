@@ -54,7 +54,29 @@ final public class AES128CBCCipher: Cipher {
         return encryptedData
     }
     
-    public func decrypt(data: Data) -> Data {
-        Data()
+    public func decrypt(data encryptedData: Data) -> Data {
+        assert(encryptedData.count % AES128CBCCipher.blockSize == 0)
+
+        var carryoverToXor = iv
+        var decryptedData = Data()
+        stride(from: 0, to: encryptedData.count, by: blockSize)
+            .forEach { [ecbCipher] index in
+                let nextBlock = encryptedData[index..<index+blockSize]
+                let decryptedBlock = ecbCipher.decrypt(data: nextBlock)
+                let xorCipher = FixedXorCipher(key: carryoverToXor)
+                let plaintextBlock = xorCipher.decrypt(data: decryptedBlock)
+                decryptedData += plaintextBlock
+                carryoverToXor = nextBlock
+            }
+        
+        if shouldPadData {
+            do {
+                decryptedData = try Padding.stripPKCS7(from: decryptedData, blockSize: 0)
+            } catch {
+                // We've decrypted something that was supposed to have padding, but it doesn't.
+                return Data()
+            }
+        }
+        return decryptedData
     }
 }
