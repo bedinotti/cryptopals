@@ -24,7 +24,7 @@ struct Challenge10: Challenge {
         let key = "YELLOW SUBMARINE".data(using: .utf8)!
         let cipher = AES128CBCCipher(key: key, initializationVector: Data(repeating: 0x00, count: AES128CBCCipher.blockSize))
         // Note: I had to do challenge 15 before this one worked
-        let result = cipher.decrypt(data: encryptedData)
+        let result = try! cipher.decrypt(data: encryptedData)
         
         let resultDisplay = String(decoding: result, as: UTF8.self)
         update(resultDisplay)

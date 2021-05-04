@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol Cipher {
-    func encrypt(data: Data) -> Data
-    func decrypt(data: Data) -> Data
+    func encrypt(data: Data) throws -> Data
+    func decrypt(data: Data) throws -> Data
 }

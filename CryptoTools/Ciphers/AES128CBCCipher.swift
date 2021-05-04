@@ -28,7 +28,7 @@ final public class AES128CBCCipher: Cipher {
         ecbCipher = AES128ECBCipher(key: key, hasPadding: false)
     }
     
-    public func encrypt(data: Data) -> Data {
+    public func encrypt(data: Data) throws -> Data {
         let dataToEncrypt: Data
         if shouldPadData {
             dataToEncrypt = Padding.pkcs7(data, blockSize: blockSize)
@@ -41,12 +41,12 @@ final public class AES128CBCCipher: Cipher {
         
         var carryoverToXor = iv
         var encryptedData = Data()
-        stride(from: 0, to: dataToEncrypt.count, by: blockSize)
+        try stride(from: 0, to: dataToEncrypt.count, by: blockSize)
             .forEach { [ecbCipher] index in
                 let nextBlock = dataToEncrypt[index..<index+blockSize]
                 let xorCipher = FixedXorCipher(key: carryoverToXor)
                 let xordBlock = xorCipher.encrypt(data: nextBlock)
-                let encryptedBlock = ecbCipher.encrypt(data: xordBlock)
+                let encryptedBlock = try ecbCipher.encrypt(data: xordBlock)
                 encryptedData += encryptedBlock
                 carryoverToXor = encryptedBlock
             }
@@ -54,15 +54,15 @@ final public class AES128CBCCipher: Cipher {
         return encryptedData
     }
     
-    public func decrypt(data encryptedData: Data) -> Data {
+    public func decrypt(data encryptedData: Data) throws -> Data {
         assert(encryptedData.count % AES128CBCCipher.blockSize == 0)
 
         var carryoverToXor = iv
         var decryptedData = Data()
-        stride(from: 0, to: encryptedData.count, by: blockSize)
+        try stride(from: 0, to: encryptedData.count, by: blockSize)
             .forEach { [ecbCipher] index in
                 let nextBlock = encryptedData[index..<index+blockSize]
-                let decryptedBlock = ecbCipher.decrypt(data: nextBlock)
+                let decryptedBlock = try ecbCipher.decrypt(data: nextBlock)
                 let xorCipher = FixedXorCipher(key: carryoverToXor)
                 let plaintextBlock = xorCipher.decrypt(data: decryptedBlock)
                 decryptedData += plaintextBlock
@@ -70,12 +70,7 @@ final public class AES128CBCCipher: Cipher {
             }
         
         if shouldPadData {
-            do {
-                decryptedData = try Padding.stripPKCS7(from: decryptedData)
-            } catch {
-                // We've decrypted something that was supposed to have padding, but it doesn't.
-                return Data()
-            }
+            decryptedData = try Padding.stripPKCS7(from: decryptedData)
         }
         return decryptedData
     }

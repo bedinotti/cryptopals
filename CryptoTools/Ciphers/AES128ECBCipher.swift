@@ -14,13 +14,13 @@ public class AES128ECBCipher: Cipher {
         aes = try! AES(key: key.bytes, blockMode: ECB(), padding: hasPadding ? .pkcs7 : .noPadding)
     }
     
-    public func encrypt(data: Data) -> Data {
-        let bytes = try! aes.encrypt(data.bytes)
+    public func encrypt(data: Data) throws -> Data {
+        let bytes = try aes.encrypt(data.bytes)
         return Data(bytes)
     }
     
-    public func decrypt(data: Data) -> Data {
-        let bytes = try! aes.decrypt(data.bytes)
+    public func decrypt(data: Data) throws -> Data {
+        let bytes = try aes.decrypt(data.bytes)
         return Data(bytes)
     }
 }
