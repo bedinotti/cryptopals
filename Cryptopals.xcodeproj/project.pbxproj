@@ -51,6 +51,7 @@
 		83D314BE2641AC500004FCBC /* Challenge10.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314BD2641AC500004FCBC /* Challenge10.swift */; };
 		83D314C02641AD4C0004FCBC /* AES128CBCCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314BF2641AD4C0004FCBC /* AES128CBCCipher.swift */; };
 		83D314C22641B3F00004FCBC /* Challenge15.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314C12641B3F00004FCBC /* Challenge15.swift */; };
+		83D314C42641C3A00004FCBC /* Challenge11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314C32641C3A00004FCBC /* Challenge11.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		83D314BD2641AC500004FCBC /* Challenge10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge10.swift; sourceTree = "<group>"; };
 		83D314BF2641AD4C0004FCBC /* AES128CBCCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES128CBCCipher.swift; sourceTree = "<group>"; };
 		83D314C12641B3F00004FCBC /* Challenge15.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge15.swift; sourceTree = "<group>"; };
+		83D314C32641C3A00004FCBC /* Challenge11.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge11.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +325,7 @@
 			children = (
 				836940A5263F293F000D3599 /* Challenge09.swift */,
 				83D314BD2641AC500004FCBC /* Challenge10.swift */,
+				83D314C32641C3A00004FCBC /* Challenge11.swift */,
 				83D314C12641B3F00004FCBC /* Challenge15.swift */,
 			);
 			path = Set2;
@@ -513,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83D314BE2641AC500004FCBC /* Challenge10.swift in Sources */,
+				83D314C42641C3A00004FCBC /* Challenge11.swift in Sources */,
 				83694081263BAF19000D3599 /* Challenge04.swift in Sources */,
 				83D314C22641B3F00004FCBC /* Challenge15.swift in Sources */,
 				83694092263C95EC000D3599 /* Challenge06.swift in Sources */,
