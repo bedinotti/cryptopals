@@ -54,6 +54,7 @@
 		83D314C42641C3A00004FCBC /* Challenge11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314C32641C3A00004FCBC /* Challenge11.swift */; };
 		83D314C62641C8CD0004FCBC /* AES128.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314C52641C8CD0004FCBC /* AES128.swift */; };
 		83D314C82641D41B0004FCBC /* Challenge12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314C72641D41B0004FCBC /* Challenge12.swift */; };
+		83D314CA2641F1A00004FCBC /* AnalysisDetectECBSuffixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314C92641F1A00004FCBC /* AnalysisDetectECBSuffixTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +155,7 @@
 		83D314C32641C3A00004FCBC /* Challenge11.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge11.swift; sourceTree = "<group>"; };
 		83D314C52641C8CD0004FCBC /* AES128.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES128.swift; sourceTree = "<group>"; };
 		83D314C72641D41B0004FCBC /* Challenge12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge12.swift; sourceTree = "<group>"; };
+		83D314C92641F1A00004FCBC /* AnalysisDetectECBSuffixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisDetectECBSuffixTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +267,7 @@
 				83694079263AECC5000D3599 /* AnalysisEnglishScoreTests.swift */,
 				83694095263CA71C000D3599 /* AnalysisBlockSizeTests.swift */,
 				83694093263C979F000D3599 /* AnalysisHammingDistanceTests.swift */,
+				83D314C92641F1A00004FCBC /* AnalysisDetectECBSuffixTests.swift */,
 				8349140E2635FB7900892487 /* DataDisplayHexStringTests.swift */,
 				8349144126360AB400892487 /* DataDisplayBase64Tests.swift */,
 				83694073263A31E3000D3599 /* FixedXorCipherTests.swift */,
@@ -574,6 +577,7 @@
 				8349140F2635FB7900892487 /* DataDisplayHexStringTests.swift in Sources */,
 				83694074263A31E3000D3599 /* FixedXorCipherTests.swift in Sources */,
 				836940AA263F2B2D000D3599 /* PaddingPKCS7Tests.swift in Sources */,
+				83D314CA2641F1A00004FCBC /* AnalysisDetectECBSuffixTests.swift in Sources */,
 				8369408C263C91D7000D3599 /* RepeatingXorCipherTests.swift in Sources */,
 				8349144226360AB400892487 /* DataDisplayBase64Tests.swift in Sources */,
 				8369407A263AECC5000D3599 /* AnalysisEnglishScoreTests.swift in Sources */,
