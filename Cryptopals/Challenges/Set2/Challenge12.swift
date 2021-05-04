@@ -40,5 +40,10 @@ struct Challenge12: Challenge {
         let blockSize = Analysis.detectBlockSize(inMethod: oracle.encrypt(data:))
         let method = Analysis.detectAESCipher(in: oracle.encrypt(data:))
         update("Block size is \(blockSize), method is \(method)")
+        
+        let suffix = Analysis.detectECBSuffix(blockSize: blockSize, encryptionMethod: oracle.encrypt(data:))
+        
+        update("Suffix in hex: \(DataDisplay.hexString(for: suffix))")
+        update("Suffix in utf: \(String(decoding: suffix, as: UTF8.self))")
     }
 }

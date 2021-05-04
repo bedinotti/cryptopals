@@ -234,4 +234,8 @@ public class Analysis {
         let encryptedData = encryptionMethod(repeatedInput)
         return detectAESCipher(in: encryptedData)
     }
+    
+    public static func detectECBSuffix(blockSize: Int, encryptionMethod: (Data) -> Data) -> Data {
+        Data()
+    }
 }
