@@ -8,11 +8,19 @@
 import Foundation
 
 public enum Padding {
+    public enum Error: Swift.Error {
+        case invalidPadding
+    }
+    
     public static func pkcs7(_ input: Data, blockSize: Int) -> Data {
         let remainder = input.count % blockSize
         let paddingSize = blockSize - remainder
         var result = input
         result.append(Data(repeating: UInt8(paddingSize), count: paddingSize))
         return result
+    }
+    
+    public static func stripPKCS7(from: Data, blockSize: Int) throws -> Data {
+        throw Error.invalidPadding
     }
 }
