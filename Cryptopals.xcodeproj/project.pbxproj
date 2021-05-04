@@ -49,6 +49,7 @@
 		836940AA263F2B2D000D3599 /* PaddingPKCS7Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836940A9263F2B2D000D3599 /* PaddingPKCS7Tests.swift */; };
 		83D314BC2641AC370004FCBC /* 10.txt in Resources */ = {isa = PBXBuildFile; fileRef = 83D314BB2641AC370004FCBC /* 10.txt */; };
 		83D314BE2641AC500004FCBC /* Challenge10.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314BD2641AC500004FCBC /* Challenge10.swift */; };
+		83D314C02641AD4C0004FCBC /* AES128CBCCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314BF2641AD4C0004FCBC /* AES128CBCCipher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +145,7 @@
 		836940A9263F2B2D000D3599 /* PaddingPKCS7Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingPKCS7Tests.swift; sourceTree = "<group>"; };
 		83D314BB2641AC370004FCBC /* 10.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 10.txt; sourceTree = "<group>"; };
 		83D314BD2641AC500004FCBC /* Challenge10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge10.swift; sourceTree = "<group>"; };
+		83D314BF2641AD4C0004FCBC /* AES128CBCCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES128CBCCipher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +297,7 @@
 			children = (
 				8369406E263A308B000D3599 /* Cipher.swift */,
 				8369409E263CC6DF000D3599 /* AES128ECBCipher.swift */,
+				83D314BF2641AD4C0004FCBC /* AES128CBCCipher.swift */,
 				83694071263A30F7000D3599 /* FixedXorCipher.swift */,
 				83694089263C91C9000D3599 /* RepeatingXorCipher.swift */,
 			);
@@ -542,6 +545,7 @@
 				83694072263A30F7000D3599 /* FixedXorCipher.swift in Sources */,
 				8369408A263C91C9000D3599 /* RepeatingXorCipher.swift in Sources */,
 				834914322635FDA400892487 /* DataDisplay.swift in Sources */,
+				83D314C02641AD4C0004FCBC /* AES128CBCCipher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
