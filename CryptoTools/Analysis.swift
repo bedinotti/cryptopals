@@ -107,12 +107,20 @@ public class Analysis {
         return difference
     }
     
+    /// Compute the number of bits that differ between two UTF8 strings.
+    /// - Parameters:
+    ///   - from: A UTF8 String
+    ///   - to: A UTF8 String
+    /// - Returns: The number of bits that are different between the two strings when encoded as UTF8 bytes.
     public static func hammingDistanceForUTF8Strings(_ from: String, _ to: String) -> Int {
         let fromData = from.data(using: .utf8)!
         let toData = to.data(using: .utf8)!
         return hammingDistance(fromData, toData)
     }
     
+    /// Guess the block size for a single piece of encrypted data.
+    /// - Parameter encryptedData: The data that has been (presumably) encoded with a block cipher
+    /// - Returns: The most likely size of the block in bytes.
     public static func blockSize(in encryptedData: Data) -> Int {
         struct PartialResult {
             let blockSize: Int
@@ -168,6 +176,9 @@ public class Analysis {
         return smallestScore.blockSize
     }
     
+    /// Detect the block cipher mode for some encrypted data
+    /// - Parameter encryptedData: A piece of (presumably) block-encoded data.
+    /// - Returns: The likely encoding used to create the given data.
     public static func detectAESCipher(in encryptedData: Data) -> AES128.Encoding {
         assert(encryptedData.count % AES128.blockSize == 0)
 
