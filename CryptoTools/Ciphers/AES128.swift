@@ -14,4 +14,12 @@ public enum AES128 {
         case electronicCodebook
         case cipherBlockChaining
     }
+    
+    public static func randomKey() -> Data {
+        let bytes = (0..<blockSize)
+            .map { _ in
+                UInt8.random(in: 0...UInt8.max)
+            }
+        return Data(bytes)
+    }
 }

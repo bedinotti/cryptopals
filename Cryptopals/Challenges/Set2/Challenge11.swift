@@ -16,19 +16,26 @@ struct Challenge11: Challenge {
     let subject = PassthroughSubject<ChallengeUpdate, Error>()
     
     class Oracle {
-        enum Encoding: CaseIterable {
-            case electronicCodeBlock
-            case chainBlockCipher
+        private let cipher: Cipher
+        private let encoding: AES128.Encoding
+        init() {
+            let key = AES128.randomKey()
+            encoding = AES128.Encoding.allCases.randomElement()!
+            switch encoding {
+            case .electronicCodebook:
+                cipher = AES128.ECBCipher(key: key)
+            case .cipherBlockChaining:
+                cipher = AES128.CBCCipher(key: key, initializationVector: AES128.randomKey())
+            }
         }
         
-        func encrypt(data: Data) -> (Data, Encoding) {
-            let encoding = Encoding.allCases.randomElement()!
+        func encrypt(data: Data) -> (Data, AES128.Encoding) {
             return (data, encoding)
         }
     }
     
-    func detectCipherMode(for encryptedData: Data) -> Oracle.Encoding {
-        .electronicCodeBlock
+    func detectCipherMode(for encryptedData: Data) -> AES128.Encoding {
+        .electronicCodebook
     }
     
     func run() {
