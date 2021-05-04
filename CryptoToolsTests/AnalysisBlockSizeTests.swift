@@ -26,5 +26,34 @@ class AnalysisBlockSizeTests: XCTestCase {
 
         XCTAssertEqual(output, expected)
     }
+    
+    private class ZeroPadEncrypt {
+        private let blockSize: Int
+        init(blockSize: Int) {
+            self.blockSize = blockSize
+        }
+        
+        func encrypt(data: Data) -> Data {
+            let remainder = blockSize - (data.count % blockSize)
+            return data + Data(repeating: 0x0, count: remainder)
+        }
+    }
+    
+    func testSmallBlockSizeDetectionWithEncryptionMethod() throws {
+        let blockSize = 12
+        let cipher = ZeroPadEncrypt(blockSize: blockSize)
+        let output = Analysis.detectBlockSize(inMethod: cipher.encrypt(data:))
+        
+        XCTAssertEqual(output, blockSize)
+    }
+    
+    
+    func testLargeBlockSizeDetectionWithEncryptionMethod() throws {
+        let blockSize = 64
+        let cipher = ZeroPadEncrypt(blockSize: blockSize)
+        let output = Analysis.detectBlockSize(inMethod: cipher.encrypt(data:))
+        
+        XCTAssertEqual(output, blockSize)
+    }
 
 }
