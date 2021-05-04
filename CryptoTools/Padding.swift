@@ -20,7 +20,7 @@ public enum Padding {
         return result
     }
     
-    public static func stripPKCS7(from data: Data, blockSize: Int) throws -> Data {
+    public static func stripPKCS7(from data: Data) throws -> Data {
         guard let paddingSize = data.last else {
             throw Error.invalidPadding
         }

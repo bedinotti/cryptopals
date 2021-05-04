@@ -71,7 +71,7 @@ final public class AES128CBCCipher: Cipher {
         
         if shouldPadData {
             do {
-                decryptedData = try Padding.stripPKCS7(from: decryptedData, blockSize: 0)
+                decryptedData = try Padding.stripPKCS7(from: decryptedData)
             } catch {
                 // We've decrypted something that was supposed to have padding, but it doesn't.
                 return Data()

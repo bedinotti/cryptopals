@@ -19,7 +19,7 @@ struct Challenge15: Challenge {
         let thirdExample  = "ICE ICE BABY".data(using: .utf8)! + Data([0x01, 0x02, 0x03, 0x04])
         
         do {
-            let result = try Padding.stripPKCS7(from: firstExample, blockSize: AES128CBCCipher.blockSize)
+            let result = try Padding.stripPKCS7(from: firstExample)
             let resultString = String(decoding: result, as: UTF8.self)
             let expected = "ICE ICE BABY"
             update("🎉 Valid input decrypted \(resultString == expected ? "correctly" : "incorrectly")")
@@ -30,7 +30,7 @@ struct Challenge15: Challenge {
         }
         
         do {
-            let result = try Padding.stripPKCS7(from: secondExample, blockSize: AES128CBCCipher.blockSize)
+            let result = try Padding.stripPKCS7(from: secondExample)
             update("❌ Invalid input decrypted to >\(String(decoding: result, as: UTF8.self))<")
         } catch Padding.Error.invalidPadding {
             update("🎉 Invalid input failed with invalid padding error.")
@@ -39,7 +39,7 @@ struct Challenge15: Challenge {
         }
         
         do {
-            let result = try Padding.stripPKCS7(from: thirdExample, blockSize: AES128CBCCipher.blockSize)
+            let result = try Padding.stripPKCS7(from: thirdExample)
             update("❌ Second invalid input decrypted to >\(String(decoding: result, as: UTF8.self))<")
         } catch Padding.Error.invalidPadding {
             update("🎉 Second invalid input failed with invalid padding error.")
