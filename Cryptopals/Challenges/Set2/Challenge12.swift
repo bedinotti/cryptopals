@@ -37,6 +37,8 @@ struct Challenge12: Challenge {
     
     func run() {
         let oracle = Oracle()
-        update("Not implemented.")
+        let blockSize = Analysis.detectBlockSize(inMethod: oracle.encrypt(data:))
+        let method = Analysis.detectAESCipher(in: oracle.encrypt(data:))
+        update("Block size is \(blockSize), method is \(method)")
     }
 }

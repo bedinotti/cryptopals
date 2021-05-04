@@ -222,4 +222,16 @@ public class Analysis {
             return .cipherBlockChaining
         }
     }
+    
+    public static func detectAESCipher(in encryptionMethod: (Data) -> Data) -> AES128.Encoding {
+        // Smallest input to get a repeatd ECB block is 3x block size. If a block was 4 characters:
+        // Best Case: Multiple repeated blocks
+        // AAAA AAAA AAAA
+        // Worst Case: Consumed with early and late padding
+        // XAAA AAAA AAAA A
+        
+        let repeatedInput = Data(repeating: 0x41, count: AES128.blockSize * 3)
+        let encryptedData = encryptionMethod(repeatedInput)
+        return detectAESCipher(in: encryptedData)
+    }
 }
