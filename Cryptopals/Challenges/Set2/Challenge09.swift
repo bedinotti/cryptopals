@@ -14,6 +14,10 @@ struct Challenge09: Challenge {
     let subject = PassthroughSubject<ChallengeUpdate, Error>()
     
     func run() {
-        update("Not implemented")
+        let input = "YELLOW SUBMARINE".data(using: .utf8)!
+        let expected = input + Data(repeating: 0x04, count: 4)
+        let output = Padding.pkcs7(input, blockSize: 20)
+        
+        complete(success: output == expected)
     }
 }
