@@ -53,6 +53,7 @@
 		83D314C22641B3F00004FCBC /* Challenge15.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314C12641B3F00004FCBC /* Challenge15.swift */; };
 		83D314C42641C3A00004FCBC /* Challenge11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314C32641C3A00004FCBC /* Challenge11.swift */; };
 		83D314C62641C8CD0004FCBC /* AES128.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314C52641C8CD0004FCBC /* AES128.swift */; };
+		83D314C82641D41B0004FCBC /* Challenge12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314C72641D41B0004FCBC /* Challenge12.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +153,7 @@
 		83D314C12641B3F00004FCBC /* Challenge15.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge15.swift; sourceTree = "<group>"; };
 		83D314C32641C3A00004FCBC /* Challenge11.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge11.swift; sourceTree = "<group>"; };
 		83D314C52641C8CD0004FCBC /* AES128.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES128.swift; sourceTree = "<group>"; };
+		83D314C72641D41B0004FCBC /* Challenge12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge12.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +331,7 @@
 				836940A5263F293F000D3599 /* Challenge09.swift */,
 				83D314BD2641AC500004FCBC /* Challenge10.swift */,
 				83D314C32641C3A00004FCBC /* Challenge11.swift */,
+				83D314C72641D41B0004FCBC /* Challenge12.swift */,
 				83D314C12641B3F00004FCBC /* Challenge15.swift */,
 			);
 			path = Set2;
@@ -528,6 +531,7 @@
 				834914492636628D00892487 /* Challenges.swift in Sources */,
 				8369408E263C9394000D3599 /* Challenge05.swift in Sources */,
 				83694076263A32CB000D3599 /* Challenge02.swift in Sources */,
+				83D314C82641D41B0004FCBC /* Challenge12.swift in Sources */,
 				836940A6263F293F000D3599 /* Challenge09.swift in Sources */,
 				836940A3263EE495000D3599 /* Challenge08.swift in Sources */,
 				8369409A263CC3BC000D3599 /* Challenge07.swift in Sources */,
