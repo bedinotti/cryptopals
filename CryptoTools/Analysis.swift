@@ -167,4 +167,29 @@ public class Analysis {
             
         return smallestScore.blockSize
     }
+    
+    public static func detectAESCipher(in encryptedData: Data) -> AES128.Encoding {
+        assert(encryptedData.count % AES128.blockSize == 0)
+
+        var isBlockDuplicated = false
+        
+        // Assume that a repeated block means it's ECB
+        firstBlockLoop: for firstBlockIndex in stride(from: 0, to: encryptedData.count, by: AES128.blockSize) {
+            let nextIndex = firstBlockIndex + AES128.blockSize
+            let firstBlock = encryptedData[firstBlockIndex..<nextIndex]
+            for secondBlockIndex in stride(from: nextIndex, to: encryptedData.count, by: AES128.blockSize) {
+                let secondBlock = encryptedData[secondBlockIndex..<secondBlockIndex+AES128.blockSize]
+                if firstBlock == secondBlock {
+                    isBlockDuplicated = true
+                    break firstBlockLoop
+                }
+            }
+        }
+        
+        if isBlockDuplicated {
+            return .electronicCodebook
+        } else {
+            return .cipherBlockChaining
+        }
+    }
 }

@@ -30,12 +30,17 @@ struct Challenge11: Challenge {
         }
         
         func encrypt(data: Data) -> (Data, AES128.Encoding) {
-            return (data, encoding)
+            let paddedData: Data =
+                Data((0..<Int.random(in: 5...10)).map { _ in UInt8.random(in: 0...UInt8.max) })
+                + data
+                + Data((0..<Int.random(in: 5...10)).map { _ in UInt8.random(in: 0...UInt8.max) })
+            
+            return (try! cipher.encrypt(data: paddedData), encoding)
         }
     }
     
     func detectCipherMode(for encryptedData: Data) -> AES128.Encoding {
-        .electronicCodebook
+        Analysis.detectAESCipher(in: encryptedData)
     }
     
     func run() {
