@@ -21,7 +21,7 @@ struct Challenge06: Challenge {
     }
     
     func run() {
-        let keySize = Analysis.blockSize(in: encryptedData)
+        let keySize = Analysis.guessBlockSize(in: encryptedData)
         update("Guessing the key size is \(keySize)")
         
         var blocks = [Data]()

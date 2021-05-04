@@ -123,7 +123,7 @@ public class Analysis {
     /// If you have access to the encryption method used, prefer `detectBlockSize(inMethod:)`
     /// - Parameter encryptedData: The data that has been (presumably) encoded with a block cipher
     /// - Returns: The most likely size of the block in bytes.
-    public static func blockSize(in encryptedData: Data) -> Int {
+    public static func guessBlockSize(in encryptedData: Data) -> Int {
         struct PartialResult {
             let blockSize: Int
             let averageHammingDistance: Double

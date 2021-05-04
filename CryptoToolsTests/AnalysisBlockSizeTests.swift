@@ -22,7 +22,7 @@ class AnalysisBlockSizeTests: XCTestCase {
         let encryptedData = cipher.encrypt(data: largeDataToEncrypt)
         
         let expected = key.count
-        let output = Analysis.blockSize(in: encryptedData)
+        let output = Analysis.guessBlockSize(in: encryptedData)
 
         XCTAssertEqual(output, expected)
     }
