@@ -236,6 +236,21 @@ public class Analysis {
     }
     
     public static func detectECBSuffix(blockSize: Int, encryptionMethod: (Data) -> Data) -> Data {
-        Data()
+        
+        var discoveredBlock = Data()
+        for byteOffsetInBlock in 0..<blockSize {
+            let unknownLastByte = Data(repeating: 0x41, count: blockSize - 1 - byteOffsetInBlock)
+            let encryptedInput = encryptionMethod(unknownLastByte)
+            for possibleLastByte in 0...UInt8.max {
+                let knownLastByte = unknownLastByte + [possibleLastByte]
+                let encryptedBlockWithKnownByte = encryptionMethod(knownLastByte)
+                
+                if encryptedBlockWithKnownByte[0..<blockSize] == encryptedInput[0..<blockSize] {
+                    discoveredBlock.append(possibleLastByte)
+                    break
+                }
+            }
+        }
+        return discoveredBlock
     }
 }
