@@ -19,6 +19,7 @@ struct Challenge03: Challenge {
     }
 
     func run() {
+        // swiftlint:disable:next line_length
         let ciphertext = DataDisplay.data(forHexString: "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736")!
 
         let bestResult = (0...UInt8.max)

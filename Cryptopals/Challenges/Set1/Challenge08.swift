@@ -51,6 +51,7 @@ struct Challenge08: Challenge {
         }
 
         let likelyCBC = sortedResult.first!
-        update("This is CBC with \(likelyCBC.duplicatedBlockCount) repeated blocks: \(DataDisplay.hexString(for: likelyCBC.ciphertext))")
+        update("This is CBC with \(likelyCBC.duplicatedBlockCount)")
+        update("repeated blocks: \(DataDisplay.hexString(for: likelyCBC.ciphertext))")
     }
 }

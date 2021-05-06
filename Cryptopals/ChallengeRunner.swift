@@ -34,7 +34,6 @@ class ChallengeRunner {
                 case .finished:
                     self.printUpdate(.finished, id: challengeID)
                 case .failure(let error):
-                    // TODO: What should I do here?
                     print("\(challengeID) failed with error: \(error)")
                 }
             } receiveValue: { update in
@@ -77,11 +76,11 @@ class ChallengeRunner {
     /// Create a display string for the given nanoseconds
     /// - Parameter ns: The number of nanoseconds to display
     /// - Returns: A nicely formatted display of those nanoseconds.
-    private func formatNanoseconds(_ ns: UInt64) -> String {
+    private func formatNanoseconds(_ nanoseconds: UInt64) -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.maximumFractionDigits = 2
 
-        var value = Double(ns)
+        var value = Double(nanoseconds)
         let units: String
         switch value {
         case 0..<100:
