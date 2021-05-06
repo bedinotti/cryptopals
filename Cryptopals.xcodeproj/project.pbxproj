@@ -358,6 +358,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 834913EE2635FB0600892487 /* Build configuration list for PBXNativeTarget "Cryptopals" */;
 			buildPhases = (
+				835EE7DE26447F3000864DFB /* Run SwiftLint */,
 				834913C42635FB0500892487 /* Sources */,
 				834913C52635FB0500892487 /* Frameworks */,
 				834913C62635FB0500892487 /* Resources */,
@@ -518,6 +519,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		835EE7DE26447F3000864DFB /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		834913C42635FB0500892487 /* Sources */ = {
