@@ -52,7 +52,9 @@ public class Analysis {
         " ": 100.0 / 1000,
     ]
     
-    /// Analyze the given text and return a score based on how much the text looks like normal English. This is a relative score -- the value is irrelevant on its own, but is useful when compared to other texts scored with this same function.
+    /// Analyze the given text and return a score based on how much the text looks like normal English.
+    /// This is a relative score -- the value is irrelevant on its own, but is useful when compared to other
+    /// texts scored with this same function.
     /// - Parameter text: The text to score
     /// - Returns: A number representing how English the text is. Higher scores are better.
     public static func englishScore(for text: String) -> Double {

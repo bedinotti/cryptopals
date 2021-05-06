@@ -8,7 +8,8 @@
 import Foundation
 
 /// This namspace has a collection of functions for creating more easy-to-read displays of byte arrays.
-/// Foundation provides implementations for these methods, so we're using our own namespace to be sure we're using our own implementation
+/// Foundation provides implementations for these methods, so we're using our own namespace to be sure we're
+/// using our own implementation
 public enum DataDisplay {
     
     /// Convert a string of 2-digit hexidecimal numbers into a Data object
@@ -19,8 +20,8 @@ public enum DataDisplay {
             return nil
         }
         var bytes = [UInt8]()
-        for i in stride(from: 0, to: hexString.count, by: 2) {
-            let rangeStart = hexString.index(hexString.startIndex, offsetBy: i)
+        for offset in stride(from: 0, to: hexString.count, by: 2) {
+            let rangeStart = hexString.index(hexString.startIndex, offsetBy: offset)
             let rangeEnd = hexString.index(rangeStart, offsetBy: 2)
             let range = rangeStart..<rangeEnd
             guard let byte = UInt8(hexString[range], radix: 16) else {
