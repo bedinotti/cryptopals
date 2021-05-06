@@ -242,7 +242,7 @@ public class Analysis {
             let unknownLastByte = Data(repeating: 0x41, count: blockSize - 1 - byteOffsetInBlock)
             let encryptedInput = encryptionMethod(unknownLastByte)
             for possibleLastByte in 0...UInt8.max {
-                let knownLastByte = unknownLastByte + [possibleLastByte]
+                let knownLastByte = unknownLastByte + discoveredBlock + [possibleLastByte]
                 let encryptedBlockWithKnownByte = encryptionMethod(knownLastByte)
                 
                 if encryptedBlockWithKnownByte[0..<blockSize] == encryptedInput[0..<blockSize] {
@@ -251,6 +251,12 @@ public class Analysis {
                 }
             }
         }
+        
+        // We can guess one byte of pkcs#7 padding, but then adding additional inputs will change the repeated value
+        // in the padding. When we've successfully finished determining our suffix, let's remove the last byte, since
+        // it's padding and not content.
+        _ = discoveredBlock.removeLast()
+        
         return discoveredBlock
     }
 }

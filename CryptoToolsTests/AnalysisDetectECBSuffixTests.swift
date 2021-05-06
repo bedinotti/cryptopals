@@ -38,7 +38,7 @@ class AnalysisDetectECBSuffixTests: XCTestCase {
         let cipher = AES128.ECBCipher(key: key)
         let suffix = "HELLO WORLD".data(using: .utf8)!
         let output = Analysis.detectECBSuffix(blockSize: AES128.blockSize) { data in
-            try! cipher.encrypt(data: data)
+            try! cipher.encrypt(data: data + suffix)
         }
         
         XCTAssertEqual(output, suffix)
