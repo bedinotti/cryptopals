@@ -236,27 +236,46 @@ public class Analysis {
     }
     
     public static func detectECBSuffix(blockSize: Int, encryptionMethod: (Data) -> Data) -> Data {
+        var discoveredSuffix = Data()
         
-        var discoveredBlock = Data()
-        for byteOffsetInBlock in 0..<blockSize {
-            let unknownLastByte = Data(repeating: 0x41, count: blockSize - 1 - byteOffsetInBlock)
-            let encryptedInput = encryptionMethod(unknownLastByte)
-            for possibleLastByte in 0...UInt8.max {
-                let knownLastByte = unknownLastByte + discoveredBlock + [possibleLastByte]
-                let encryptedBlockWithKnownByte = encryptionMethod(knownLastByte)
+        let maximumSuffixBlocks = encryptionMethod(Data()).count / blockSize
+        
+        // For every block in the suffix ...
+        blockLoop: for blockOffset in 0..<maximumSuffixBlocks {
+            var discoveredBlock = Data()
+            // ... go byte-by-byte ...
+            for byteOffsetInBlock in 0..<blockSize {
+                let unknownLastByte = Data(repeating: 0x41, count: blockSize - 1 - byteOffsetInBlock)
+                let encryptedInput = encryptionMethod(unknownLastByte)
+                var didDiscoverMatchingByte = false
+                // ... and guess all possible next bytes
+                for possibleLastByte in 0...UInt8.max {
+                    let knownLastByte = unknownLastByte + discoveredSuffix + discoveredBlock + [possibleLastByte]
+                    let encryptedBlockWithKnownByte = encryptionMethod(knownLastByte)
+                    
+                    let range = (blockOffset * blockSize)..<(blockOffset * blockSize + blockSize)
+                    if encryptedBlockWithKnownByte[range] == encryptedInput[range] {
+                        discoveredBlock.append(possibleLastByte)
+                        didDiscoverMatchingByte = true
+                        break
+                    }
+                }
                 
-                if encryptedBlockWithKnownByte[0..<blockSize] == encryptedInput[0..<blockSize] {
-                    discoveredBlock.append(possibleLastByte)
-                    break
+                // If we weren't able to guess the next byte, then previous bytes have changed. We're likely in
+                // the padding, and have completely discovered the suffix.
+                if !didDiscoverMatchingByte {
+                    discoveredSuffix.append(discoveredBlock)
+                    break blockLoop
                 }
             }
+            discoveredSuffix.append(discoveredBlock)
         }
         
         // We can guess one byte of pkcs#7 padding, but then adding additional inputs will change the repeated value
         // in the padding. When we've successfully finished determining our suffix, let's remove the last byte, since
         // it's padding and not content.
-        _ = discoveredBlock.removeLast()
+        _ = discoveredSuffix.removeLast()
         
-        return discoveredBlock
+        return discoveredSuffix
     }
 }
