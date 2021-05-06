@@ -12,7 +12,7 @@ public class RepeatingXorCipher: Cipher {
     public init(key: Data) {
         self.key = key
     }
-    
+
     public func encrypt(data: Data) -> Data {
         let bytes = data
             .enumerated()
@@ -21,7 +21,7 @@ public class RepeatingXorCipher: Cipher {
             }
         return Data(bytes)
     }
-    
+
     public func decrypt(data: Data) -> Data {
         // Encrypting and decrypting are identical with XOR
         encrypt(data: data)

@@ -20,17 +20,17 @@ extension Challenge {
     var publisher: AnyPublisher<ChallengeUpdate, Error> {
         subject.eraseToAnyPublisher()
     }
-    
+
     func runWithUpdates() {
         subject.send(.started)
         run()
         subject.send(.finished)
     }
-    
+
     func update(_ message: String) {
         subject.send(.message(message))
     }
-    
+
     func complete(success: Bool) {
         subject.send(.completed(success: success))
     }
@@ -58,7 +58,7 @@ enum Challenges {
         Challenge10.self,
         Challenge11.self,
         Challenge12.self,
-        
+
         Challenge15.self,
     ]
 }

@@ -9,12 +9,12 @@ import Foundation
 
 public enum AES128 {
     public static let blockSize = 16
-    
+
     public enum Encoding: CaseIterable {
         case electronicCodebook
         case cipherBlockChaining
     }
-    
+
     public static func randomKey() -> Data {
         let bytes = (0..<blockSize)
             .map { _ in

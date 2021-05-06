@@ -13,23 +13,23 @@ struct Challenge06: Challenge {
     static let id = 6
     let subject = PassthroughSubject<ChallengeUpdate, Error>()
     private let encryptedData: Data
-    
+
     init() {
         let file = Bundle.main.url(forResource: "6", withExtension: "txt")!
         let contents = try! String(contentsOf: file).replacingOccurrences(of: "\n", with: "")
         encryptedData = DataDisplay.data(forBase64String: contents)!
     }
-    
+
     func run() {
         let keySize = Analysis.guessBlockSize(in: encryptedData)
         update("Guessing the key size is \(keySize)")
-        
+
         var blocks = [Data]()
         for index in stride(from: 0, to: encryptedData.count, by: keySize) {
             let data: Data = encryptedData[index..<min(index+keySize, encryptedData.count)]
             blocks.append(data)
         }
-        
+
         var transposedBlocks = [Data]()
         for index in 0..<keySize {
             let bytesAtIndex = blocks.compactMap { block -> UInt8? in
@@ -41,7 +41,7 @@ struct Challenge06: Challenge {
             }
             transposedBlocks.append(Data(bytesAtIndex))
         }
-        
+
         struct PartialResult {
             let characterValue: UInt8
             let score: Double
@@ -68,13 +68,13 @@ struct Challenge06: Challenge {
                 }
             return result!.characterValue
         }
-        
+
         let key = Data(likelyKeys)
         update("I think the key is \(String(decoding: key, as: UTF8.self))")
-        
+
         let finalCipher = RepeatingXorCipher(key: key)
         let decryptedData = finalCipher.decrypt(data: encryptedData)
-        
+
         update("Output:\n\(String(decoding: decryptedData, as: UTF8.self))")
     }
 }

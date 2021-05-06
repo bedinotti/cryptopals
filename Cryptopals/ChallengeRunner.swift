@@ -11,19 +11,19 @@ import Foundation
 class ChallengeRunner {
     var types: [Challenge.Type]
     private let shouldMeasureRuntime: Bool
-    
+
     private var startTimeInNanoseconds: UInt64?
     private var currentSubscription: AnyCancellable?
-    
+
     convenience init(challengeType: Challenge.Type) {
         self.init(challengeTypes: [challengeType])
     }
-    
+
     init(challengeTypes: [Challenge.Type], shouldMeasureRuntime: Bool = true) {
         types = challengeTypes
         self.shouldMeasureRuntime = shouldMeasureRuntime
     }
-    
+
     /// Run all of the challenges
     func run() {
         types.forEach { challengeType in
@@ -46,11 +46,11 @@ class ChallengeRunner {
             } else {
                 startTimeInNanoseconds = nil
             }
-            
+
             challenge.runWithUpdates()
         }
     }
-    
+
     private func printUpdate(_ update: ChallengeUpdate, id: Int) {
         switch update {
         case .started:
@@ -73,14 +73,14 @@ class ChallengeRunner {
             }
         }
     }
-    
+
     /// Create a display string for the given nanoseconds
     /// - Parameter ns: The number of nanoseconds to display
     /// - Returns: A nicely formatted display of those nanoseconds.
     private func formatNanoseconds(_ ns: UInt64) -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.maximumFractionDigits = 2
-        
+
         var value = Double(ns)
         let units: String
         switch value {
@@ -98,7 +98,7 @@ class ChallengeRunner {
         default:
             units = "ns"
         }
-        
+
         let valString = numberFormatter.string(for: value)!
         return "\(valString)\(units)"
     }

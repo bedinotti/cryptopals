@@ -12,11 +12,11 @@ class FixedXorCipherTests: XCTestCase {
     func testSingleByteFixedXorCipher() throws {
         let key = Data([0xf0])
         let cipher = FixedXorCipher(key: key)
-        
+
         let input = Data([0x3c])
         let expected = Data([0xcc])
         let output = cipher.encrypt(data: input)
-        
+
         XCTAssertEqual(output, expected)
     }
 }

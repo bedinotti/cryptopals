@@ -11,7 +11,7 @@ import Foundation
 /// Foundation provides implementations for these methods, so we're using our own namespace to be sure we're
 /// using our own implementation
 public enum DataDisplay {
-    
+
     /// Convert a string of 2-digit hexidecimal numbers into a Data object
     /// - Parameter hexString: The hex string to convert
     /// - Returns: Those bytes as a Data object
@@ -31,7 +31,7 @@ public enum DataDisplay {
         }
         return Data(bytes)
     }
-    
+
     /// Convert a data object onto a string represention of 2-digit hex bytes
     /// - Parameter data: The data to convert
     /// - Returns: A hex string
@@ -40,8 +40,7 @@ public enum DataDisplay {
             .map { String($0, radix: 16) }
             .reduce("", +)
     }
-    
-    
+
     private static func base64IndexFor(char: Character) -> UInt8? {
         let index: UInt8
         guard let asciiValue = char.asciiValue else {
@@ -63,12 +62,12 @@ public enum DataDisplay {
         }
         return index
     }
-    
+
     private static func characterFor(base64Index index: UInt8) -> Character? {
         guard 0 <= index, index <= 63 else {
             return nil
         }
-        
+
         let value: UInt8
         switch index {
         case 0...25:
@@ -84,7 +83,7 @@ public enum DataDisplay {
         default:
             fatalError("Invalid Base64 index should have already returned nil")
         }
-        
+
         return Character(Unicode.Scalar(value))
     }
 
@@ -101,9 +100,9 @@ public enum DataDisplay {
             let rangeEnd = base64String.index(rangeStart, offsetBy: 4)
             let range = rangeStart..<rangeEnd
             let substring = base64String[range]
-            
+
             assert(substring.count == 4)
-            
+
             var indexes = [UInt8]()
             for char in substring {
                 if let index = base64IndexFor(char: char) {
@@ -115,7 +114,7 @@ public enum DataDisplay {
                     return nil
                 }
             }
-            
+
             let memory: UInt32 = indexes
                 .enumerated()
                 .reduce(UInt32(0)) { (memory, pair) -> UInt32 in
@@ -123,7 +122,7 @@ public enum DataDisplay {
                     let shiftAmount = 6 * (3 - index)
                     return memory | (UInt32(value) << shiftAmount)
                 }
-            
+
             bytes.append(UInt8((memory & 0xff0000) >> 16))
             if indexes.count > 2 {
                 bytes.append(UInt8((memory & 0x00ff00) >> 8))
@@ -134,7 +133,7 @@ public enum DataDisplay {
         }
         return Data(bytes)
     }
-    
+
     /// Convert a data object into its base64-encoded String representation
     /// - Parameter data: The data to convert
     /// - Returns: A base64-encoded string
@@ -145,22 +144,22 @@ public enum DataDisplay {
             let offset = min(data.distance(from: rangeStart, to: data.endIndex), 3)
             let rangeEnd = data.index(rangeStart, offsetBy: offset)
             let range = rangeStart..<rangeEnd
-            
+
             let bytes = data[range]
             assert(bytes.count <= 3)
-            
+
             let memory: UInt32 = bytes
                 .enumerated()
                 .reduce(UInt32(0)) { (memory, pair) -> UInt32 in
                     let shiftAmount = 8 * (2 - pair.offset)
                     return memory | (UInt32(pair.element) << shiftAmount)
                 }
-            
+
             let first  = UInt8((memory & 0xfc0000) >> (6 * 3))
             let second = UInt8((memory & 0x03f000) >> (6 * 2))
             let third  = UInt8((memory & 0x000fc0) >> (6))
             let fourth = UInt8(memory & 0x00003f)
-            
+
             let validCharcters: [UInt8]
             let equalsToAppend: Int
             switch bytes.count {
@@ -176,7 +175,7 @@ public enum DataDisplay {
             default:
                 fatalError("Data should be a multiple of 3 when encoding to Base64")
             }
-            
+
             result.append(contentsOf: validCharcters.compactMap(characterFor(base64Index:)))
             result.append(contentsOf: String(repeating: "=", count: equalsToAppend))
         }

@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     let shouldRunAllChallenges = false
-    
+
     var body: some View {
         Text("Hello, world!")
             .padding()
             .onAppear(perform: runCurrentChallenge)
     }
-    
+
     func runCurrentChallenge() {
         if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil {
             let types = shouldRunAllChallenges ? Challenges.all : [Challenges.current]
@@ -24,7 +24,6 @@ struct ContentView: View {
         }
     }
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

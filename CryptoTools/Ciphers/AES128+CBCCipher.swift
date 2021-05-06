@@ -13,22 +13,22 @@ extension AES128 {
         private var blockSize: Int {
             AES128.blockSize
         }
-        
+
         private let iv: Data
         private let shouldPadData: Bool
         private let ecbCipher: ECBCipher
-        
+
         public init(key: Data, initializationVector iv: Data, hasPadding: Bool = true) {
             precondition(key.count == AES128.blockSize)
             precondition(iv.count == AES128.blockSize)
-            
+
             self.iv = iv
             shouldPadData = hasPadding
-            
+
             // We do our own padding, so we don't need to use padding with the ECB cipher
             ecbCipher = ECBCipher(key: key, hasPadding: false)
         }
-        
+
         public func encrypt(data: Data) throws -> Data {
             let dataToEncrypt: Data
             if shouldPadData {
@@ -36,10 +36,10 @@ extension AES128 {
             } else {
                 dataToEncrypt = data
             }
-            
+
             // Make sure we're block-aligned now
             assert(dataToEncrypt.count % blockSize == 0)
-            
+
             var carryoverToXor = iv
             var encryptedData = Data()
             try stride(from: 0, to: dataToEncrypt.count, by: blockSize)
@@ -51,13 +51,13 @@ extension AES128 {
                     encryptedData += encryptedBlock
                     carryoverToXor = encryptedBlock
                 }
-            
+
             return encryptedData
         }
-        
+
         public func decrypt(data encryptedData: Data) throws -> Data {
             assert(encryptedData.count % blockSize == 0)
-            
+
             var carryoverToXor = iv
             var decryptedData = Data()
             try stride(from: 0, to: encryptedData.count, by: blockSize)
@@ -69,7 +69,7 @@ extension AES128 {
                     decryptedData += plaintextBlock
                     carryoverToXor = nextBlock
                 }
-            
+
             if shouldPadData {
                 decryptedData = try Padding.stripPKCS7(from: decryptedData)
             }

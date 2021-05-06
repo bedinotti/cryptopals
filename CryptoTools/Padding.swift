@@ -11,7 +11,7 @@ public enum Padding {
     public enum Error: Swift.Error {
         case invalidPadding
     }
-    
+
     public static func pkcs7(_ input: Data, blockSize: Int) -> Data {
         let remainder = input.count % blockSize
         let paddingSize = blockSize - remainder
@@ -19,12 +19,12 @@ public enum Padding {
         result.append(Data(repeating: UInt8(paddingSize), count: paddingSize))
         return result
     }
-    
+
     public static func stripPKCS7(from data: Data) throws -> Data {
         guard let paddingSize = data.last else {
             throw Error.invalidPadding
         }
-        
+
         // validate
         let start = data.count - Int(paddingSize)
         guard start >= 0 else {

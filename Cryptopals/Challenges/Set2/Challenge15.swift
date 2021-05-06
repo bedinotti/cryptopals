@@ -12,12 +12,12 @@ import Foundation
 struct Challenge15: Challenge {
     static let id = 15
     let subject = PassthroughSubject<ChallengeUpdate, Error>()
-    
+
     func run() {
         let firstExample  = "ICE ICE BABY".data(using: .utf8)! + Data(repeating: 0x04, count: 4)
         let secondExample = "ICE ICE BABY".data(using: .utf8)! + Data(repeating: 0x05, count: 4)
         let thirdExample  = "ICE ICE BABY".data(using: .utf8)! + Data([0x01, 0x02, 0x03, 0x04])
-        
+
         do {
             let result = try Padding.stripPKCS7(from: firstExample)
             let resultString = String(decoding: result, as: UTF8.self)
@@ -28,7 +28,7 @@ struct Challenge15: Challenge {
         } catch {
             update("❌ Valid input had unknown error: \(error)")
         }
-        
+
         do {
             let result = try Padding.stripPKCS7(from: secondExample)
             update("❌ Invalid input decrypted to >\(String(decoding: result, as: UTF8.self))<")
@@ -37,7 +37,7 @@ struct Challenge15: Challenge {
         } catch {
             update("❌ Invalid input had unknown error: \(error)")
         }
-        
+
         do {
             let result = try Padding.stripPKCS7(from: thirdExample)
             update("❌ Second invalid input decrypted to >\(String(decoding: result, as: UTF8.self))<")

@@ -1,2 +1,8 @@
 disabled_rules:
   - force_try
+  - trailing_comma
+
+identifier_name:
+  excluded:
+    - to
+    - id

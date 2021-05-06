@@ -13,7 +13,7 @@ struct Challenge04: Challenge {
     static let id = 4
     let subject = PassthroughSubject<ChallengeUpdate, Error>()
     private let input: [Data]
-    
+
     init() {
         let url = Bundle.main.url(forResource: "4", withExtension: "txt")!
         let hexFile = try! String(contentsOf: url)
@@ -23,14 +23,14 @@ struct Challenge04: Challenge {
                 DataDisplay.data(forHexString: hexString)!
             }
     }
-    
+
     private struct PartialResult {
         let key: UInt8
         let ciphertext: Data
         let plaintext: String
         let score: Double
     }
-    
+
     func run() {
         let bestScores = input.map { (data: Data) -> PartialResult in
             let result = (0...UInt8.max)
@@ -57,7 +57,7 @@ struct Challenge04: Challenge {
                 }
             return result!
         }
-        
+
         let bestPartialResult = bestScores.reduce(nil) { (previous: PartialResult?, current: PartialResult) in
             guard let previous = previous else {
                 return current
@@ -68,7 +68,7 @@ struct Challenge04: Challenge {
                 return current
             }
         }
-        
+
         let result = bestPartialResult!
         update("0x\(String(result.key, radix: 16)) decodes one line to: \(result.plaintext)")
     }

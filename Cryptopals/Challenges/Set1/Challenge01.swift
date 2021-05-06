@@ -12,17 +12,17 @@ import Foundation
 struct Challenge01: Challenge {
     static let id = 1
     let subject = PassthroughSubject<ChallengeUpdate, Error>()
-    
+
     func run() {
         let hexString = "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d"
         let expectedBase64 = "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t"
-        
+
         guard let data = DataDisplay.data(forHexString: hexString) else {
             update("Hex string is invalid")
             return
         }
         let result = DataDisplay.base64String(for: data)
-        
+
         complete(success: expectedBase64 == result)
     }
 }

@@ -9,7 +9,7 @@ import XCTest
 @testable import CryptoTools
 
 class AnalysisBlockSizeTests: XCTestCase {
-    
+
     let largeDataToEncrypt = """
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
     ut labore et dolore magna aliqua. Interdum velit laoreet id donec ultrices tincidunt. In
@@ -36,44 +36,43 @@ class AnalysisBlockSizeTests: XCTestCase {
     morbi blandit. Accumsan tortor posuere ac ut. Pellentesque elit eget gravida cum sociis
     natoque penatibus.
     """.data(using: .utf8)!
-    
+
     func testSixteenByteKeySize() throws {
         let key = "sixteen candles!".data(using: .utf8)!
         let cipher = RepeatingXorCipher(key: key)
         let encryptedData = cipher.encrypt(data: largeDataToEncrypt)
-        
+
         let expected = key.count
         let output = Analysis.guessBlockSize(in: encryptedData)
 
         XCTAssertEqual(output, expected)
     }
-    
+
     private class ZeroPadEncrypt {
         private let blockSize: Int
         init(blockSize: Int) {
             self.blockSize = blockSize
         }
-        
+
         func encrypt(data: Data) -> Data {
             let remainder = blockSize - (data.count % blockSize)
             return data + Data(repeating: 0x0, count: remainder)
         }
     }
-    
+
     func testSmallBlockSizeDetectionWithEncryptionMethod() throws {
         let blockSize = 12
         let cipher = ZeroPadEncrypt(blockSize: blockSize)
         let output = Analysis.detectBlockSize(inMethod: cipher.encrypt(data:))
-        
+
         XCTAssertEqual(output, blockSize)
     }
-    
-    
+
     func testLargeBlockSizeDetectionWithEncryptionMethod() throws {
         let blockSize = 64
         let cipher = ZeroPadEncrypt(blockSize: blockSize)
         let output = Analysis.detectBlockSize(inMethod: cipher.encrypt(data:))
-        
+
         XCTAssertEqual(output, blockSize)
     }
 

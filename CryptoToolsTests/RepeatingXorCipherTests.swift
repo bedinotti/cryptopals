@@ -16,7 +16,7 @@ class RepeatingXorCipherTests: XCTestCase {
         let input = Data(repeating: 0, count: key.count)
         let output = cipher.encrypt(data: input)
         let expected = Data([0x01, 0x02, 0x03])
-        
+
         XCTAssertEqual(output, expected)
     }
 
@@ -27,7 +27,7 @@ class RepeatingXorCipherTests: XCTestCase {
         let input = Data([0x01, 0x02, 0x03, 0x04, 0x05])
         let output = cipher.encrypt(data: input)
         let expected = Data([0x00, 0x00, 0x00, 0x05, 0x07])
-        
+
         XCTAssertEqual(output, expected)
     }
 
