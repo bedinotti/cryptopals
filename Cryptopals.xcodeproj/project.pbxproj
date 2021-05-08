@@ -51,6 +51,7 @@
 		836940A8263F2AFB000D3599 /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836940A7263F2AFB000D3599 /* Padding.swift */; };
 		836940AA263F2B2D000D3599 /* PaddingPKCS7Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836940A9263F2B2D000D3599 /* PaddingPKCS7Tests.swift */; };
 		838F40712646DFDF00C76DA5 /* Challenge16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838F40702646DFDF00C76DA5 /* Challenge16.swift */; };
+		838F40742646E78400C76DA5 /* Challenge17.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838F40732646E78400C76DA5 /* Challenge17.swift */; };
 		83D314BC2641AC370004FCBC /* 10.txt in Resources */ = {isa = PBXBuildFile; fileRef = 83D314BB2641AC370004FCBC /* 10.txt */; };
 		83D314BE2641AC500004FCBC /* Challenge10.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314BD2641AC500004FCBC /* Challenge10.swift */; };
 		83D314C02641AD4C0004FCBC /* AES128+CBCCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D314BF2641AD4C0004FCBC /* AES128+CBCCipher.swift */; };
@@ -156,6 +157,7 @@
 		836940A7263F2AFB000D3599 /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		836940A9263F2B2D000D3599 /* PaddingPKCS7Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingPKCS7Tests.swift; sourceTree = "<group>"; };
 		838F40702646DFDF00C76DA5 /* Challenge16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge16.swift; sourceTree = "<group>"; };
+		838F40732646E78400C76DA5 /* Challenge17.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge17.swift; sourceTree = "<group>"; };
 		83D314BB2641AC370004FCBC /* 10.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 10.txt; sourceTree = "<group>"; };
 		83D314BD2641AC500004FCBC /* Challenge10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge10.swift; sourceTree = "<group>"; };
 		83D314BF2641AD4C0004FCBC /* AES128+CBCCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AES128+CBCCipher.swift"; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				834914482636628D00892487 /* Challenges.swift */,
 				834914472636627D00892487 /* Set1 */,
 				836940A4263F290B000D3599 /* Set2 */,
+				838F40722646E76F00C76DA5 /* Set3 */,
 			);
 			path = Challenges;
 			sourceTree = "<group>";
@@ -350,6 +353,14 @@
 				838F40702646DFDF00C76DA5 /* Challenge16.swift */,
 			);
 			path = Set2;
+			sourceTree = "<group>";
+		};
+		838F40722646E76F00C76DA5 /* Set3 */ = {
+			isa = PBXGroup;
+			children = (
+				838F40732646E78400C76DA5 /* Challenge17.swift */,
+			);
+			path = Set3;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -572,6 +583,7 @@
 				834DE18E2646CD48000960C9 /* Challenge14.swift in Sources */,
 				83D314C82641D41B0004FCBC /* Challenge12.swift in Sources */,
 				836940A6263F293F000D3599 /* Challenge09.swift in Sources */,
+				838F40742646E78400C76DA5 /* Challenge17.swift in Sources */,
 				836940A3263EE495000D3599 /* Challenge08.swift in Sources */,
 				8369409A263CC3BC000D3599 /* Challenge07.swift in Sources */,
 				83694084263C2E16000D3599 /* ChallengeRunner.swift in Sources */,
