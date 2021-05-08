@@ -243,25 +243,31 @@ public class Analysis {
         let baselineResult = encryptionMethod(Data())
         let oneByteResult = encryptionMethod(Data(repeating: 0x00, count: 1))
 
+        func doBlocksMatch(blockIndex: Int, _ left: Data, _ right: Data) -> Bool {
+            let range = blockSize*blockIndex..<(blockSize*blockIndex + blockSize)
+            return left[range] == right[range]
+        }
+
         // Find out which block changed
         var changingBlockIndex = 0
-        while baselineResult[blockSize*changingBlockIndex..<(blockSize*changingBlockIndex + blockSize)]
-                ==
-                oneByteResult[blockSize*changingBlockIndex..<(blockSize*changingBlockIndex + blockSize)] {
+        while doBlocksMatch(blockIndex: changingBlockIndex, baselineResult, oneByteResult) {
             changingBlockIndex += 1
         }
 
-//
-//        var count = 0
-//        var variant = baseline
-//        repeat {
-//            count += 1
-//            let newData = Data(repeating: 0x41, count: count)
-//            variant = encryptionMethod(newData)
-//        } while variant.count == baseline.count
-//
-//        return variant.count - baseline.count
-        return changingBlockIndex * blockSize + 0
+        // Add one byte at a time until that block stops changing
+        var addedByteCount = 1
+        var previousResult = oneByteResult
+        var currentResult = oneByteResult
+        repeat {
+            addedByteCount += 1
+            previousResult = currentResult
+            currentResult = encryptionMethod(Data(repeating: 0x41, count: addedByteCount))
+        } while !doBlocksMatch(blockIndex: changingBlockIndex, previousResult, currentResult)
+
+        // Calculate how large the block prefix is. We had to go one over to get the blocks to match
+        let prefixInBlockCount = blockSize - addedByteCount + 1
+        
+        return changingBlockIndex * blockSize + prefixInBlockCount
     }
 
     public static func detectECBSuffix(blockSize: Int, encryptionMethod: (Data) -> Data) -> Data {
