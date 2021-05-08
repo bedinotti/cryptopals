@@ -287,7 +287,7 @@ public class Analysis {
 
         let prefixBlocks = prefixSize == 0 ? 0 : prefixSize / blockSize + 1
         let maximumSuffixBlocks = (encryptionMethod(Data()).count / blockSize) - prefixBlocks
-        
+
         // Let's add prefix padding before our "unknown last byte" blocks. This will block-align the following input
         // In the event there is no prefix, or the prefix is block-aligned, we'll add a full block of prefix padding.
         let prefixPadding = Data(repeating: 0, count: blockSize - (prefixSize % blockSize))
