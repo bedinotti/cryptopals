@@ -39,6 +39,9 @@ struct Challenge16: Challenge {
                 .components(separatedBy: ";")
                 .reduce(into: [String: String]()) { dict, stringPair in
                     let pair = stringPair.components(separatedBy: "=")
+                    guard pair.count == 2 else {
+                        return
+                    }
                     let key = pair[0]
                     let value = pair[1]
                     dict[key] = value
@@ -50,11 +53,49 @@ struct Challenge16: Challenge {
 
     func run() {
         let server = Server()
+        let attackString = ";admin=true;"
 
         // Let's make sure a naive attack won't work
-        let naiveRequest = server.encryptedRequest(userData: ";admin=true;")
+        let naiveRequest = server.encryptedRequest(userData: attackString)
         let naiveResult = server.isEncryptedAdmin(request: naiveRequest)
         update("Naive attack \(naiveResult ? "did" : "did not") work.")
 
+        func encryptMethod(_ input: Data) -> Data {
+            server.encryptedRequest(userData: String(decoding: input, as: UTF8.self))
+        }
+
+        // Follow our routine and analyze the method.
+        let blockSize = Analysis.detectBlockSize(inMethod: encryptMethod(_:))
+        let method = Analysis.detectAESCipher(in: encryptMethod(_:))
+        update("This looks like \(method) with block size \(blockSize)")
+
+        let prefixSize = Analysis.detectECBPrefixSize(blockSize: blockSize, encryptionMethod: encryptMethod(_:))
+        update("Prefix is \(prefixSize) bytes")
+
+        // Make a block-aligned input, and mask the illegal characters
+        // The prefix is block aligned, so we don't need to do anyhing special to adjust
+        let byteMask: UInt8 = 0x01
+        let attackBlockString = attackString + String(repeating: ";", count: blockSize - attackString.count)
+        let maskBlock = attackBlockString.map { letter -> UInt8 in
+            if letter == ";" || letter == "=" {
+                return byteMask
+            } else {
+                return 0x00
+            }
+        }
+
+        // Xor our mask with our input. Use that same mask on the block before our input, and the encryption
+        // method should un-mask our attack string.
+        let xorCipher = FixedXorCipher(key: Data(maskBlock))
+        let maskedInput = xorCipher.encrypt(data: attackBlockString.data(using: .utf8)!)
+        var attackOutput = encryptMethod(maskedInput)
+        var maskedPriorBlock = attackOutput[blockSize..<2*blockSize]
+        maskedPriorBlock = xorCipher.encrypt(data: maskedPriorBlock)
+        attackOutput[blockSize..<2*blockSize] = maskedPriorBlock
+
+        // Let's see if it worked.
+        let attackedResult = server.isEncryptedAdmin(request: attackOutput)
+        update("Bit flipping attack \(attackedResult ? "did" : "did not") work.")
+        complete(success: attackedResult)
     }
 }
