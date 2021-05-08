@@ -240,7 +240,17 @@ public class Analysis {
     }
 
     public static func detectECBPrefixSize(blockSize: Int, encryptionMethod: (Data) -> Data) -> Int {
-//        let baseline = encryptionMethod(Data())
+        let baselineResult = encryptionMethod(Data())
+        let oneByteResult = encryptionMethod(Data(repeating: 0x00, count: 1))
+
+        // Find out which block changed
+        var changingBlockIndex = 0
+        while baselineResult[blockSize*changingBlockIndex..<(blockSize*changingBlockIndex + blockSize)]
+                ==
+                oneByteResult[blockSize*changingBlockIndex..<(blockSize*changingBlockIndex + blockSize)] {
+            changingBlockIndex += 1
+        }
+
 //
 //        var count = 0
 //        var variant = baseline
@@ -251,7 +261,7 @@ public class Analysis {
 //        } while variant.count == baseline.count
 //
 //        return variant.count - baseline.count
-        0
+        return changingBlockIndex * blockSize + 0
     }
 
     public static func detectECBSuffix(blockSize: Int, encryptionMethod: (Data) -> Data) -> Data {
