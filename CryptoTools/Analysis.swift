@@ -238,7 +238,13 @@ public class Analysis {
         let encryptedData = encryptionMethod(repeatedInput)
         return detectAESCipher(in: encryptedData)
     }
-
+    
+    /// Determine how many bytes are prepended to input sent to the encryption method.
+    /// While we can't detect what the bytes are, we can detect how many exist.
+    /// - Parameters:
+    ///   - blockSize: The block size used by the encryption method
+    ///   - encryptionMethod: The method that performs the encryption
+    /// - Returns: The number of bytes prepended to our input.
     public static func detectECBPrefixSize(blockSize: Int, encryptionMethod: (Data) -> Data) -> Int {
         let baselineResult = encryptionMethod(Data())
         let oneByteResult = encryptionMethod(Data(repeating: 0x00, count: 1))
