@@ -90,22 +90,22 @@ struct Challenge13: Challenge {
         //   - B is pkcs7 padding for the rest of that block
         //   - C is pcks7 padding provided by the encrypt(data:) method for the rest of our input
         //   - 0 is any byte that helps align the blocks in this specific way.
-        
+
         let emailBlock = Data(repeating: 0x41, count: blockSize - "email=".count)
         let adminBlock = Padding.pkcs7("admin".data(using: .utf8)!, blockSize: blockSize)
         let remainingPadding = Data(repeating: 0x41, count: blockSize - "&uid=10&role=".count)
-        
+
         let encryptedBlocks = encrypt(data: emailBlock + adminBlock + remainingPadding)
         let encryptedAdminBlock = encryptedBlocks[blockSize..<2*blockSize]
-        
+
         // Now, we'll re-use our admin block to replace the final block in this encoded message
         //     email=cdownie+cr yptopalsD@gmail. com&uid=10&role= userCCCCCCCCCCCC
         // Then, replace the final block with our "admin" block from earlier to create
         //     email=cdownie+cr yptopalsD@gmail. com&uid=10&role= adminBBBBBBBBBBB
-        
+
         var attackPayload = encrypt(data: "cdownie+cryptopalsD@gmail.com".data(using: .utf8)!)
         attackPayload[3*blockSize..<4*blockSize] = encryptedAdminBlock
-        
+
         // See if our payload tricks the server.
         let profile = try! server.createProfile(encryptedRequest: attackPayload)
         complete(success: profile?.role == "admin")
