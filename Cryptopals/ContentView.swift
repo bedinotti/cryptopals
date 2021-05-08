@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    let shouldRunAllChallenges = true
+    let shouldRunAllChallenges = false
 
     var body: some View {
         Text("Hello, world!")

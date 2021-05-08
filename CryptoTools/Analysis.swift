@@ -285,20 +285,26 @@ public class Analysis {
     public static func detectECBSuffix(blockSize: Int, prefixSize: Int = 0, encryptionMethod: (Data) -> Data) -> Data {
         var discoveredSuffix = Data()
 
-        let maximumSuffixBlocks = encryptionMethod(Data()).count / blockSize
+        let prefixBlocks = prefixSize == 0 ? 0 : prefixSize / blockSize + 1
+        let maximumSuffixBlocks = (encryptionMethod(Data()).count / blockSize) - prefixBlocks
+        
+        // Let's add prefix padding before our "unknown last byte" blocks. This will block-align the following input
+        // In the event there is no prefix, or the prefix is block-aligned, we'll add a full block of prefix padding.
+        let prefixPadding = Data(repeating: 0, count: blockSize - (prefixSize % blockSize))
 
         // For every block in the suffix ...
-        blockLoop: for blockOffset in 0..<maximumSuffixBlocks {
+        blockLoop: for suffixBlockOffset in 0..<maximumSuffixBlocks {
+            let blockOffset = suffixBlockOffset + prefixBlocks
             var discoveredBlock = Data()
             // ... go byte-by-byte ...
             for byteOffsetInBlock in 0..<blockSize {
                 let unknownLastByte = Data(repeating: 0x41, count: blockSize - 1 - byteOffsetInBlock)
-                let encryptedInput = encryptionMethod(unknownLastByte)
+                let encryptedInput = encryptionMethod(prefixPadding + unknownLastByte)
                 var didDiscoverMatchingByte = false
                 // ... and guess all possible next bytes
                 for possibleLastByte in 0...UInt8.max {
                     let knownLastByte = unknownLastByte + discoveredSuffix + discoveredBlock + [possibleLastByte]
-                    let encryptedBlockWithKnownByte = encryptionMethod(knownLastByte)
+                    let encryptedBlockWithKnownByte = encryptionMethod(prefixPadding + knownLastByte)
 
                     let range = (blockOffset * blockSize)..<(blockOffset * blockSize + blockSize)
                     if encryptedBlockWithKnownByte[range] == encryptedInput[range] {

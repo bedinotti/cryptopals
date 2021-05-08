@@ -48,10 +48,13 @@ struct Challenge14: Challenge {
         let method = Analysis.detectAESCipher(in: oracle.encrypt(data:))
         update("Block size is \(blockSize), method is \(method)")
 
-        let suffix = Analysis.detectECBSuffix(blockSize: blockSize, encryptionMethod: oracle.encrypt(data:))
+        let prefixSize = Analysis.detectECBPrefixSize(blockSize: blockSize, encryptionMethod: oracle.encrypt(data:))
+        update("Detected prefix size of \(prefixSize), should be \(oracle.paddingPrefix.count)")
+        let suffix = Analysis.detectECBSuffix(blockSize: blockSize,
+                                              prefixSize: prefixSize,
+                                              encryptionMethod: oracle.encrypt(data:))
 
         update("Suffix in hex: \(DataDisplay.hexString(for: suffix))")
         update("Suffix in utf: \(String(decoding: suffix, as: UTF8.self))")
-
     }
 }
