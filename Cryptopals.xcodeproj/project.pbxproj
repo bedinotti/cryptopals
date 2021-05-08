@@ -22,6 +22,8 @@
 		834914492636628D00892487 /* Challenges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834914482636628D00892487 /* Challenges.swift */; };
 		83491451263662A900892487 /* Challenge01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83491450263662A900892487 /* Challenge01.swift */; };
 		834DE18C264489FD000960C9 /* Challenge13.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DE18B264489FD000960C9 /* Challenge13.swift */; };
+		834DE18E2646CD48000960C9 /* Challenge14.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DE18D2646CD48000960C9 /* Challenge14.swift */; };
+		834DE1902646D27B000960C9 /* AnalysisDetectECBPrefixSizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DE18F2646D27B000960C9 /* AnalysisDetectECBPrefixSizeTests.swift */; };
 		8369406F263A308B000D3599 /* Cipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369406E263A308B000D3599 /* Cipher.swift */; };
 		83694072263A30F7000D3599 /* FixedXorCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694071263A30F7000D3599 /* FixedXorCipher.swift */; };
 		83694074263A31E3000D3599 /* FixedXorCipherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83694073263A31E3000D3599 /* FixedXorCipherTests.swift */; };
@@ -125,6 +127,8 @@
 		834914482636628D00892487 /* Challenges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenges.swift; sourceTree = "<group>"; };
 		83491450263662A900892487 /* Challenge01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge01.swift; sourceTree = "<group>"; };
 		834DE18B264489FD000960C9 /* Challenge13.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge13.swift; sourceTree = "<group>"; };
+		834DE18D2646CD48000960C9 /* Challenge14.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge14.swift; sourceTree = "<group>"; };
+		834DE18F2646D27B000960C9 /* AnalysisDetectECBPrefixSizeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisDetectECBPrefixSizeTests.swift; sourceTree = "<group>"; };
 		8369406E263A308B000D3599 /* Cipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cipher.swift; sourceTree = "<group>"; };
 		83694071263A30F7000D3599 /* FixedXorCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedXorCipher.swift; sourceTree = "<group>"; };
 		83694073263A31E3000D3599 /* FixedXorCipherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedXorCipherTests.swift; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 				83694095263CA71C000D3599 /* AnalysisBlockSizeTests.swift */,
 				83694093263C979F000D3599 /* AnalysisHammingDistanceTests.swift */,
 				83D314C92641F1A00004FCBC /* AnalysisDetectECBSuffixTests.swift */,
+				834DE18F2646D27B000960C9 /* AnalysisDetectECBPrefixSizeTests.swift */,
 				8349140E2635FB7900892487 /* DataDisplayHexStringTests.swift */,
 				8349144126360AB400892487 /* DataDisplayBase64Tests.swift */,
 				83694073263A31E3000D3599 /* FixedXorCipherTests.swift */,
@@ -338,6 +343,7 @@
 				83D314C32641C3A00004FCBC /* Challenge11.swift */,
 				83D314C72641D41B0004FCBC /* Challenge12.swift */,
 				834DE18B264489FD000960C9 /* Challenge13.swift */,
+				834DE18D2646CD48000960C9 /* Challenge14.swift */,
 				83D314C12641B3F00004FCBC /* Challenge15.swift */,
 			);
 			path = Set2;
@@ -559,6 +565,7 @@
 				834914492636628D00892487 /* Challenges.swift in Sources */,
 				8369408E263C9394000D3599 /* Challenge05.swift in Sources */,
 				83694076263A32CB000D3599 /* Challenge02.swift in Sources */,
+				834DE18E2646CD48000960C9 /* Challenge14.swift in Sources */,
 				83D314C82641D41B0004FCBC /* Challenge12.swift in Sources */,
 				836940A6263F293F000D3599 /* Challenge09.swift in Sources */,
 				836940A3263EE495000D3599 /* Challenge08.swift in Sources */,
@@ -598,6 +605,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				834DE1902646D27B000960C9 /* AnalysisDetectECBPrefixSizeTests.swift in Sources */,
 				83694094263C979F000D3599 /* AnalysisHammingDistanceTests.swift in Sources */,
 				83694096263CA71C000D3599 /* AnalysisBlockSizeTests.swift in Sources */,
 				8349140F2635FB7900892487 /* DataDisplayHexStringTests.swift in Sources */,

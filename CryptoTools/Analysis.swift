@@ -239,6 +239,21 @@ public class Analysis {
         return detectAESCipher(in: encryptedData)
     }
 
+    public static func detectECBPrefixSize(blockSize: Int, encryptionMethod: (Data) -> Data) -> Int {
+//        let baseline = encryptionMethod(Data())
+//
+//        var count = 0
+//        var variant = baseline
+//        repeat {
+//            count += 1
+//            let newData = Data(repeating: 0x41, count: count)
+//            variant = encryptionMethod(newData)
+//        } while variant.count == baseline.count
+//
+//        return variant.count - baseline.count
+        0
+    }
+
     public static func detectECBSuffix(blockSize: Int, encryptionMethod: (Data) -> Data) -> Data {
         var discoveredSuffix = Data()
 
