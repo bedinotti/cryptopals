@@ -238,7 +238,7 @@ public class Analysis {
         let encryptedData = encryptionMethod(repeatedInput)
         return detectAESCipher(in: encryptedData)
     }
-    
+
     /// Determine how many bytes are prepended to input sent to the encryption method.
     /// While we can't detect what the bytes are, we can detect how many exist.
     /// - Parameters:
@@ -272,11 +272,17 @@ public class Analysis {
 
         // Calculate how large the block prefix is. We had to go one over to get the blocks to match
         let prefixInBlockCount = blockSize - addedByteCount + 1
-        
+
         return changingBlockIndex * blockSize + prefixInBlockCount
     }
 
-    public static func detectECBSuffix(blockSize: Int, encryptionMethod: (Data) -> Data) -> Data {
+    /// Detect the bytes that are appended to our inputs to a given encryption method.
+    /// - Parameters:
+    ///   - blockSize: The block size of the ECB encryption method
+    ///   - prefixSize: The number of bytes prepended to any inputs to the ECB encryption method
+    ///   - encryptionMethod: The ECB encryption method that might add a suffix
+    /// - Returns: The bytes that are appended to our input before encrypting.
+    public static func detectECBSuffix(blockSize: Int, prefixSize: Int = 0, encryptionMethod: (Data) -> Data) -> Data {
         var discoveredSuffix = Data()
 
         let maximumSuffixBlocks = encryptionMethod(Data()).count / blockSize
